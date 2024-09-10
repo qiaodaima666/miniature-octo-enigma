@@ -1,22 +1,36 @@
-## MacCMS Pro
+MacCMS Pro API 接口文档
+========================================
+> 此文档提供后端接口说明。
 
-MacCMS Pro程序是一套采用PHP+MYSQL环境下运行的完善而强大的快速建站系统。  
-经过近多年的开发经验和技术积累，MacCMS Pro程序已逐步走向成熟，在易用性和功能上已经成为同行中的佼佼者。  
-程序体积小->优化程序代码，运行速度快->高效的缓存处理，只要普通的虚拟主机就可以完美搭建起来，建站成本非常低。  
-仿MVC模板分离，内置标签，自定义函数标签接口，强大的自定义采集功能，只要你会HTML就可以轻松做出个性化的网站。  
-程序易用性和功能上一直以来都积极采纳广大站长提出的各种好的建议，迅速响应各种紧急问题，我们的服务理念贯穿其中，保证每一位站长每一个环节都可以从容应对。  
-程序采用thinkphp 5.x内核进行开发，扩展了模板处理引擎，将后台程序与html模板简单的分离出来，让设计人员与程序人员最大限度的发挥自己的优势而互不干扰，大大加快了项目有序、快速的完成。  
-即使您是第一次接触，也会在最短的时间内熟练掌握它的使用方法。后台管理模块，一目了然，操作简单，绝对不会让您眼花缭乱。
+## 相关编写规范和说明
+- 文档由markdown格式编写，结构使用gitbook方式，便于后期查阅
+- 各目录说明参考本页：附录1-文档目录结构说明
+- 文档目录、文件名都用小写和`-`连接
+- 需要新增文档，在对应目录里添加`.md`文件
+- 为保持结构简洁，如要添加目录，请先和团队成员沟通
+- 文档有大的改动、更新时，在`common/changelog.md`里说明
+- 文档编写完成需生成静态，参考下载安装`gitbook`到本地
+     - <https://www.jianshu.com/p/938c98150e14>
+     - 初次安装后，在此目录`gitbook install`一下更新插件
+     - ![参考图](https://cf.ytimga.com/mimg/94/e06/c9e25ff39792e2e9ae01fe19876.png)
 
-MacCMS Pro program is a set of PHP and MYSQL environment operating in a perfect and powerful fast station system.  
-After nearly years of development experience and technology accumulation, MacCMS Pro program has gradually matured, in ease of use and functionality has become the leader in peers.  
-The program size is small - > optimizer code, running fast - > efficient caching processing, as long as the ordinary virtual host can be perfectly built, the cost of building a station is very low.  
-Imitation MVC template separation, built-in tags, custom function label interface, powerful custom acquisition function, as long as you will HTML can easily make personalized website.  
-Program ease of use and function has been actively adopted by the vast number of station director put forward a variety of good suggestions, quickly respond to a variety of urgent issues, our service concept throughout it, to ensure that every station director every link can be calmly coped with.  
-Program using the thinkphp 5.x kernel for development, extended the template processing engine, the background program and html template simple separation, so that designers and programmers to maximize their advantages without interference, greatly speed up the project orderly and fast completion.  
-Even if you are in first contact, you will master how to use it in the shortest possible time. Back-office management module, at a glance, easy to operate, will never dazzle you.  
 
-## 免责声明
-本程序仅供内部学习和交流使用，请在遵守当地法律的前提下使用本站程序，对用户在使用过程中的自行维护的信息内容本站不负任何责任！
 
-This program is for internal learning and communication use only, please comply with local laws under the premise of using the site program, the user in the process of self-maintenance of the information content of this site is not responsible!
+附录
+------------------------------------
+
+附录1-文档目录结构说明
+```
+├── _book                    [目录]此目录为执行gitbook build之后生成的便于html访问的静态页面
+├── common                   [目录]此目录存放通用说明、共用的一些结构等
+│   ├── api-infomation.md    [文件]API说明，查看文档详情以了解更多
+│   └── changelog.md         [文件]变更历史，查看文档详情以了解更多
+├── interface                [目录]存放各个接口的目录
+│   └── article.md           [文件]示例文章模块，以英文命名
+├── styles                   [目录]存放自定义样式，默认可不作修改
+│   └── website.css
+├── GLOSSORY.md              [文件]术语解释，目前未使用
+├── README.md                [文件]本说明文档
+├── SUMMARY.md               [文件]概览，可生成gitbook的目录
+└── book.json                [文件]本文档的一些配置信息
+```
