@@ -1,0 +1,83 @@
+1，确认空间支持rewrite组件。
+2，按照 伪静态rewrite 目录下的说明文档操作。
+3，后台设置浏览模式为 rewrite伪静态 。
+
+
+如果使用rewrite伪静态模式，请注意把配置文件复制到网站根目录。
+如果静态文件后缀配置的不是html，则请把rewrite配置文件中的.html替换为对应的后缀如.html
+
+iis6.x   下使用 httpd.ini
+
+iis7.x   下使用web.config
+
+apache下使用 .htaccess  
+(编辑.htaccess文件，把 RewriteBase /maccmspro 修改为你MacCMS Pro所在目录)
+
+nginx 下使用 maccmspro.conf
+(使用vps或者服务器的可以在你的主机的conf里 用 include xxxxx.conf   也就是包含下伪静态规则文件
+如果用的是虚拟主机版的nginx 就找你的主机商给你添加规则就行，你把规则发给他。)
+
+
+server
+{
+		listen 80;
+		server_name localhost;
+    index index.php index.html index.htm default.php default.htm default.html;
+ 
+    #下面的地址以自己的前端地址为准，虽然不写也没关系，下面的必写
+    root /www/wwwroot/bbys.tv/client/dist;
+    
+    #SSL-START SSL相关配置，请勿删除或修改下一行带注释的404规则
+    #error_page 404/404.html;
+    #SSL-END
+    
+    #ERROR-PAGE-START  错误页配置，可以注释、删除或修改
+    #error_page 404 /404.html;
+    #error_page 502 /502.html;
+    #ERROR-PAGE-END
+    
+    #PHP-INFO-START  PHP引用配置，可以注释或修改
+    include enable-php-71.conf;
+    #PHP-INFO-END
+    
+    #REWRITE-START URL重写规则引用,修改后将导致面板设置的伪静态规则失效
+    # 此处为自动配置的，如果删除了，可以按照下面的地址写
+    include /www/server/panel/vhost/rewrite/bbys.tv.conf;
+    #REWRITE-END
+   
+   
+    location / {
+        # 下面的地址以自己的前端地址为准，此次必写，上面的可以不写
+        root /www/wwwroot/bbys.tv/client/dist;
+        index index.html ;
+        try_files $uri $uri/ index.html;
+    }
+    location /api {
+        # 改为自己的端口号
+      	proxy_pass http://127.0.0.1:22723/api;
+    }
+    
+    #一键申请SSL证书验证目录相关设置
+    location ~ \.well-known{
+        allow all;
+    }
+    
+    # location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+    # {
+    #     expires      30d;
+    #     error_log /dev/null;
+    #     access_log /dev/null;
+    # }
+    
+    
+    location ~ .*\.(js|css)?$
+    {
+        expires      12h;
+        error_log /dev/null;
+        access_log /dev/null; 
+    }
+    # 此处为自动配置的，如果删除了，可以按照下面的地址写
+    access_log  /www/wwwlogs/bbys.tv.log;
+    # 此处为自动配置的，如果删除了，可以按照下面的地址写
+    error_log  /www/wwwlogs/bbys.tv.error.log;
+}
