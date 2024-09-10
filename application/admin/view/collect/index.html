@@ -70,8 +70,8 @@
                     <a class="pear-btn pear-btn-primary pear-btn-md" href="{:url('api')}?{:http_build_query(['ac'=>'cj','cjflag'=>md5($vo.collect_url),'cjurl'=>$vo.collect_url,'h'=>'','t'=>'','ids'=>'','wd'=>'','type'=>$vo.collect_type,'mid'=>$vo.collect_mid,'opt'=>$vo.collect_opt,'sync_pic_opt'=>$vo.collect_sync_pic_opt,'filter'=>$vo.collect_filter,'filter_from'=>$vo.collect_filter_from,'param'=>base64_encode($vo.collect_param)])}" title="{:lang('admin/collect/index/collect_all')}">{:lang('admin/collect/index/collect_all')}</a>
                 </td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['collect_id'])}" data-width="800px" data-height="610px" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['collect_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['collect_id'])}" data-width="800px" data-height="610px" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['collect_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

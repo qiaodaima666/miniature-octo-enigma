@@ -4,6 +4,7 @@ namespace app\api\controller;
 
 use think\Db;
 use think\Request;
+use think\response\Json;
 
 class Type extends Base
 {
@@ -21,7 +22,7 @@ class Type extends Base
      *  获取分类树
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_list(Request $request)
     {
@@ -73,7 +74,7 @@ class Type extends Base
     /**
      * 查询首页分类顶部导航栏
      *
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_all_list()
     {

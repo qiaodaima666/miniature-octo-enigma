@@ -2,6 +2,7 @@
 namespace app\common\model;
 use think\Db;
 use think\Cache;
+use think\Loader;
 
 class Link extends Base {
     // 设置数据表（不含前缀）
@@ -98,7 +99,7 @@ class Link extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Link');
+        $validate = Loader::validate('Link');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

@@ -109,7 +109,7 @@
                                         <input type="text" class="layui-input" value="{$info.topic_rel_vod}" placeholder="{:lang('vod')}id,{:lang('multi_separate_tip')}" name="topic_rel_vod">
                                     </div>
                                     <div class="layui-input-inline">
-                                        <a class="pear-btn pear-btn-primary pear-btn-sm j-iframe" data-href="{:url('vod/data')}?select=1&input=topic_rel_vod" href="javascript:;" title="{:lang('search_data')}">{:lang('search_data')}</a>
+                                        <a class="pear-btn pear-btn-primary pear-btn-sm j-iframe" data-href="{:url('vod/data')}?select=1&input=topic_rel_vod" href="javascript:" title="{:lang('search_data')}">{:lang('search_data')}</a>
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -118,7 +118,7 @@
                                         <input type="text" class="layui-input" value="{$info.topic_rel_art}" placeholder="{:lang('art')}id,{:lang('multi_separate_tip')}" name="topic_rel_art">
                                     </div>
                                     <div class="layui-input-inline">
-                                        <a class="pear-btn pear-btn-primary pear-btn-sm j-iframe" data-href="{:url('art/data')}?select=1&input=topic_rel_art" href="javascript:;" title="{:lang('search_data')}">{:lang('search_data')}</a>
+                                        <a class="pear-btn pear-btn-primary pear-btn-sm j-iframe" data-href="{:url('art/data')}?select=1&input=topic_rel_art" href="javascript:" title="{:lang('search_data')}">{:lang('search_data')}</a>
                                     </div>
                                 </div>
 
@@ -269,7 +269,7 @@
         var form = layui.form
                 , layer = layui.layer
                 , $ = layui.jquery
-                , upload = layui.upload;;
+                , upload = layui.upload;
 
         // 验证
         form.verify({

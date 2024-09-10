@@ -11,6 +11,8 @@
 
 namespace think\queue\connector;
 
+use DateTime;
+use StdClass;
 use think\Db;
 use think\queue\Connector;
 use think\queue\job\Database as DatabaseJob;
@@ -67,7 +69,7 @@ class Database extends Connector
     /**
      * 重新发布任务
      * @param  string    $queue
-     * @param  \StdClass $job
+     * @param  StdClass $job
      * @param  int       $delay
      * @return mixed
      */
@@ -79,7 +81,7 @@ class Database extends Connector
     /**
      * Push a raw payload to the database with a given delay.
      *
-     * @param  \DateTime|int $delay
+     * @param  DateTime|int $delay
      * @param  string|null   $queue
      * @param  string        $payload
      * @param  int           $attempts
@@ -102,7 +104,7 @@ class Database extends Connector
      * 获取下个有效任务
      *
      * @param  string|null $queue
-     * @return \StdClass|null
+     * @return StdClass|null
      */
     protected function getNextAvailableJob($queue)
     {

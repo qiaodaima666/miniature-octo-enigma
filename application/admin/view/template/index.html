@@ -48,8 +48,8 @@
                 <td>{$vo.size}</td>
                 <td>{$vo.time|mac_day='color'}</td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info')}?fpath={$vo.path}&fname={$vo.name}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del')}?fname={$vo.fullname}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info')}?fpath={$vo.path}&fname={$vo.name}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del')}?fname={$vo.fullname}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
                 {else}
                 <th><a href="{:url('template/index',['path'=>$vo.path])}">{$vo.name}</a></th>

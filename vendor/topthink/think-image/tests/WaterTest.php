@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use SplFileInfo;
 use think\Image;
 
 class WaterTest extends TestCase
@@ -21,7 +22,7 @@ class WaterTest extends TestCase
 
         $image->water(TEST_PATH . 'images/test.gif')->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -35,7 +36,7 @@ class WaterTest extends TestCase
 
         $image->water(TEST_PATH . 'images/test.gif')->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -49,7 +50,7 @@ class WaterTest extends TestCase
 
         $image->water(TEST_PATH . 'images/test.jpg')->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 

@@ -2,6 +2,7 @@
 namespace app\admin\controller;
 use think\Db;
 use think\Cache;
+use think\Loader;
 
 class Collect extends Base
 {
@@ -63,7 +64,7 @@ class Collect extends Base
     {
         if (Request()->isPost()) {
             $param = input('post.');
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

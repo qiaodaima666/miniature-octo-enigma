@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 use think\View;
 
 class User extends Base
@@ -55,7 +56,7 @@ class User extends Base
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('User');
+        $validate = Loader::validate('User');
 
         if (isset($data['user_start_time']) && !is_numeric($data['user_start_time'])) {
             $data['user_start_time'] = strtotime($data['user_start_time']);
@@ -148,7 +149,7 @@ class User extends Base
             return ['code' => 1006, 'msg' => lang('model/user/name_contain')];
         }
 
-        $validate = \think\Loader::validate('User');
+        $validate = Loader::validate('User');
         if (!$validate->scene('add')->check($data)) {
             return ['code' => 1007, 'msg' => lang('param_err').'：' . $validate->getError()];
         }

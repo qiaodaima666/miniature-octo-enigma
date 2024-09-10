@@ -1,8 +1,10 @@
 <?php
 namespace app\admin\controller;
+use FilesystemIterator;
 use think\Db;
 use app\common\util\Dir;
 use app\common\util\Database as dbOper;
+use think\Loader;
 
 class Database extends Base
 {
@@ -21,8 +23,8 @@ class Database extends Base
             if (!is_dir($path)) {
                 Dir::create($path);
             }
-            $flag = \FilesystemIterator::KEY_AS_FILENAME;
-            $glob = new \FilesystemIterator($path,  $flag);
+            $flag = FilesystemIterator::KEY_AS_FILENAME;
+            $glob = new FilesystemIterator($path,  $flag);
 
             $list = [];
             foreach ($glob as $name => $file) {
@@ -238,7 +240,7 @@ class Database extends Base
     {
         if($this->request->isPost()){
             $param=input();
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }
@@ -284,7 +286,7 @@ class Database extends Base
             $tostr = $param['tostr'];
             $where = $param['where'];
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

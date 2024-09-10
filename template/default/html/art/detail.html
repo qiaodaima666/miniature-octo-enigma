@@ -69,7 +69,7 @@
                   <div class="art_zan_box">
                   {if condition="$obj.type.type_id neq 17"}
                   <div class="digg_zan">
-                      <a class="digg_link" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:;">
+                      <a class="digg_link" data-id="{$obj.vod_id}{$obj.art_id}{$obj.topic_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:">
 						  <span class="is_digg" data-lang="string_art_zan">{:lang_web('string_art_zan')}</span>
 						  <em class="digg_num">{$obj.vod_up}{$obj.art_up}{$obj.topic_up}</em>
                       </a>
@@ -79,7 +79,7 @@
                   {if condition="$obj.type.type_id neq 17"}
                   <div class="art_tbsm_m">
 					  <span class="art_share fr hidden_xs">
-					  <a class="btn btn_share" href="javascript:;"><i class="iconfont">&#xe615;</i>&nbsp; <span data-lang="string_vod_share">{:lang_web('string_vod_share')}</span> </a>
+					  <a class="btn btn_share" href="javascript:"><i class="iconfont">&#xe615;</i>&nbsp; <span data-lang="string_vod_share">{:lang_web('string_vod_share')}</span> </a>
 					  {include file="widget/share"}
                       </span>
                       <p data-lang="string_art_banquan">{:lang_web('string_art_banquan')}</p>

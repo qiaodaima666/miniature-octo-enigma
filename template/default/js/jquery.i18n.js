@@ -28,13 +28,13 @@
                     }
                 }
                 return '';
-            };
+            }
 
             function setCookie(name, value, myDay) {
                 var oDate = new Date();
                 oDate.setDate(oDate.getDate() + myDay);
                 document.cookie = name + '=' + value + '; expires=' + oDate;
-            };
+            }
 
             var options = $.extend(defaults, options);
 
@@ -42,7 +42,7 @@
                 defaults.defaultLang = getCookie('i18n_lang');
             } else if (options.lang == "" && defaults.defaultLang == "") {
                 throw "defaultLang must not be null !";
-            };
+            }
 
             if (options.lang != null && options.lang != "") {
                 if (options.forever) {
@@ -52,7 +52,7 @@
                 }
             } else {
                 options.lang = defaults.defaultLang;
-            };
+            }
 
             var i = this;
             $.getJSON(options.filePath + options.filePrefix + options.lang + options.fileSuffix + ".json", function(data) {

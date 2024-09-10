@@ -25,10 +25,10 @@ use think\console\output\question\Confirmation;
  * Class Output
  * @package think\console
  *
- * @see     \think\console\output\driver\Console::setDecorated
+ * @see     Console::setDecorated
  * @method void setDecorated($decorated)
  *
- * @see     \think\console\output\driver\Buffer::fetch
+ * @see     Buffer::fetch
  * @method string fetch()
  *
  * @method void info($message)
@@ -154,7 +154,7 @@ class Output
         $this->handle->write($messages, $newline, $type);
     }
 
-    public function renderException(\Exception $e)
+    public function renderException(Exception $e)
     {
         $this->handle->renderException($e);
     }

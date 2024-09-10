@@ -61,9 +61,9 @@
                 <td>{$vo.group_points_month}</td>
                 <td>{$vo.group_points_year}</td>
                 <td>
-                    <a data-full="1" class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['group_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a data-full="1" class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['group_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
                     {if condition="$vo['group_id'] gt 2"}
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['group_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['group_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                     {/if}
                 </td>
             </tr>

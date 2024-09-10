@@ -17,7 +17,7 @@
             <li class="layui-nav-item layui-hide-xs message"></li>
             <li class="layui-nav-item user">
                 <!-- 头 像 -->
-                <a href="javascript:;">
+                <a href="javascript:">
                     <!-- <img src="admin/images/avatar.jpg" class="layui-nav-img"> -->
                     <span class="layui-nav-img">
                         {:lang('opt')}
@@ -102,11 +102,11 @@
     localStorage.setItem('tip24',"{:lang('admin/public/index/title24')}")
     localStorage.setItem('language_current','<?=$language_current?>')
     
-    var obj = <?=json_encode($menus)?>;
+    var obj = <?=json_encode($menus)?>
     var arr = obj2Arr(obj);
     var parsedArr = originDataParse2PearAdminMenu(arr);
     var language_current = '<?=$language_current?>';
-    var language_list = <?=json_encode($language_list)?>;
+    var language_list = <?=json_encode($language_list)?>
     layui.use(['admin','jquery','convert','popup'], function() {
 				var admin = layui.admin;
 				var $ = layui.jquery;

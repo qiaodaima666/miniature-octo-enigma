@@ -5,6 +5,9 @@ use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\Handler\CurlMultiHandler;
 use GuzzleHttp\Handler\Proxy;
 use GuzzleHttp\Handler\StreamHandler;
+use InvalidArgumentException;
+use RuntimeException;
+use function curl_version;
 
 /**
  * Expands a URI template
@@ -97,7 +100,7 @@ function debug_resource($value = null)
  *
  * The returned handler is not wrapped by any default middlewares.
  *
- * @throws \RuntimeException if no viable Handler is available.
+ * @throws RuntimeException if no viable Handler is available.
  * @return callable Returns the best handler for the given system.
  */
 function choose_handler()
@@ -116,7 +119,7 @@ function choose_handler()
             ? Proxy::wrapStreaming($handler, new StreamHandler())
             : new StreamHandler();
     } elseif (!$handler) {
-        throw new \RuntimeException('GuzzleHttp requires cURL, the '
+        throw new RuntimeException('GuzzleHttp requires cURL, the '
             . 'allow_url_fopen ini setting, or a custom HTTP handler.');
     }
 
@@ -135,7 +138,7 @@ function default_user_agent()
     if (!$defaultAgent) {
         $defaultAgent = 'GuzzleHttp/' . Client::VERSION;
         if (extension_loaded('curl') && function_exists('curl_version')) {
-            $defaultAgent .= ' curl/' . \curl_version()['version'];
+            $defaultAgent .= ' curl/' . curl_version()['version'];
         }
         $defaultAgent .= ' PHP/' . PHP_VERSION;
     }
@@ -155,7 +158,7 @@ function default_user_agent()
  * Note: the result of this function is cached for subsequent calls.
  *
  * @return string
- * @throws \RuntimeException if no bundle can be found.
+ * @throws RuntimeException if no bundle can be found.
  */
 function default_ca_bundle()
 {
@@ -196,7 +199,7 @@ function default_ca_bundle()
         }
     }
 
-    throw new \RuntimeException(<<< EOT
+    throw new RuntimeException(<<< EOT
 No system CA bundle could be found in any of the the common system locations.
 PHP versions earlier than 5.6 are not properly configured to use the system's
 CA bundle by default. In order to verify peer certificates, you will need to
@@ -253,7 +256,7 @@ function normalize_header_keys(array $headers)
 function is_host_in_noproxy($host, array $noProxyArray)
 {
     if (strlen($host) === 0) {
-        throw new \InvalidArgumentException('Empty host provided');
+        throw new InvalidArgumentException('Empty host provided');
     }
 
     // Strip port if present.
@@ -294,14 +297,14 @@ function is_host_in_noproxy($host, array $noProxyArray)
  * @param int    $options Bitmask of JSON decode options.
  *
  * @return mixed
- * @throws \InvalidArgumentException if the JSON cannot be decoded.
+ * @throws InvalidArgumentException if the JSON cannot be decoded.
  * @link http://www.php.net/manual/en/function.json-decode.php
  */
 function json_decode($json, $assoc = false, $depth = 512, $options = 0)
 {
     $data = \json_decode($json, $assoc, $depth, $options);
     if (JSON_ERROR_NONE !== json_last_error()) {
-        throw new \InvalidArgumentException(
+        throw new InvalidArgumentException(
             'json_decode error: ' . json_last_error_msg());
     }
 
@@ -316,14 +319,14 @@ function json_decode($json, $assoc = false, $depth = 512, $options = 0)
  * @param int    $depth   Set the maximum depth. Must be greater than zero.
  *
  * @return string
- * @throws \InvalidArgumentException if the JSON cannot be encoded.
+ * @throws InvalidArgumentException if the JSON cannot be encoded.
  * @link http://www.php.net/manual/en/function.json-encode.php
  */
 function json_encode($value, $options = 0, $depth = 512)
 {
     $json = \json_encode($value, $options, $depth);
     if (JSON_ERROR_NONE !== json_last_error()) {
-        throw new \InvalidArgumentException(
+        throw new InvalidArgumentException(
             'json_encode error: ' . json_last_error_msg());
     }
 

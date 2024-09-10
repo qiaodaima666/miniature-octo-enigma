@@ -410,7 +410,7 @@
                     <ul>
                         {if condition="strpos($tplconfig[ 'theme'][ 'rtnav'][ 'ym'], 'a') !==false "}
                         <li class="top_ico ">
-                            <a href="javascript:; " class="history " title="{:lang_web('watch_history')}"><i class="iconfont ">&#xe624;</i></a>
+                            <a href="javascript: " class="history " title="{:lang_web('watch_history')}"><i class="iconfont ">&#xe624;</i></a>
                         </li>
                         {/if} {if condition="$tplconfig[ 'theme'][ 'topic'][ 'btn'] eq 1 "} {if condition="strpos($tplconfig[ 'theme'][ 'rtnav'][ 'ym'], 'b') !==false "}
                         {/if} {/if} {if condition="$GLOBALS[ 'config'][ 'gbook'][ 'status'] eq 1 "} {if condition="strpos($tplconfig[ 'theme'][ 'rtnav'][ 'ym'], 'c') !==false "}
@@ -542,7 +542,7 @@
         } else {
             $("#topnav").removeClass("nav_top");
             $('.mobile-nav').removeClass("nav_top");
-        };
+        }
         if (targetTop >= 200) {
             $("#topnav,.listnow,.mobile-head").addClass("nav_fixed");
             $("body").addClass("fixres");

@@ -2,6 +2,8 @@
 
 namespace Probe\Provider;
 
+use PDO;
+
 /**
  * @author Eugene Terentev <eugene@terentev.net>
  */
@@ -174,31 +176,31 @@ abstract class AbstractProvider implements ProviderInterface
     }
 
     /**
-     * @param \PDO $connection
+     * @param PDO $connection
      * @return mixed
      */
-    public function getDbInfo(\PDO $connection)
+    public function getDbInfo(PDO $connection)
     {
-        return $connection->getAttribute(\PDO::ATTR_SERVER_INFO);
+        return $connection->getAttribute(PDO::ATTR_SERVER_INFO);
     }
 
     /**
-     * @param \PDO $connection
+     * @param PDO $connection
      * @return mixed
      */
-    public function getDbType(\PDO $connection)
+    public function getDbType(PDO $connection)
     {
-        return $connection->getAttribute(\PDO::ATTR_DRIVER_NAME);
+        return $connection->getAttribute(PDO::ATTR_DRIVER_NAME);
     }
 
     /**
      * @param $connection
      * @return string
      */
-    public function getDbVersion(\PDO $connection)
+    public function getDbVersion(PDO $connection)
     {
         if (is_a($connection, 'PDO')) {
-            return $connection->getAttribute(\PDO::ATTR_SERVER_VERSION);
+            return $connection->getAttribute(PDO::ATTR_SERVER_VERSION);
         } else {
             return mysqli_get_server_info($connection);
         }

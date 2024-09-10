@@ -1,6 +1,8 @@
 <?php
 namespace Upyun;
 
+use Exception;
+use Psr\Http\Message\ResponseInterface;
 use Upyun\Api\Rest;
 use Upyun\Api\Form;
 use GuzzleHttp\Psr7;
@@ -48,8 +50,8 @@ class Uploader
      * @param $stream
      * @param $params
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws \Exception
+     * @return mixed|ResponseInterface
+     * @throws Exception
      */
     private function pointUpload($path, $stream, $params)
     {
@@ -68,7 +70,7 @@ class Uploader
             ), $headers))
             ->send();
         if ($res->getStatusCode() !== 204) {
-            throw new \Exception('init request failed when poinit upload!');
+            throw new Exception('init request failed when poinit upload!');
         }
 
         $init      = Util::getHeaderParams($res->getHeaders());
@@ -87,7 +89,7 @@ class Uploader
                 ->send();
 
             if ($res->getStatusCode() !== 204) {
-                throw new \Exception('upload request failed when poinit upload!');
+                throw new Exception('upload request failed when poinit upload!');
             }
             $data   = Util::getHeaderParams($res->getHeaders());
             $partId = $data['x-upyun-next-part-id'];
@@ -101,7 +103,7 @@ class Uploader
             ->send();
 
         if ($res->getStatusCode() != 204 && $res->getStatusCode() != 201) {
-            throw new \Exception('end request failed when poinit upload!');
+            throw new Exception('end request failed when poinit upload!');
         }
         return $res;
     }

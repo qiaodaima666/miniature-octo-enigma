@@ -217,7 +217,7 @@
                             <input type="text" class="layui-input" value="{$info.vod_rel_vod}" placeholder="{:lang('admin/vod/rel_vod_tip')}" name="vod_rel_vod">
                         </div>
                         <div class="layui-input-inline ">
-                            <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('vod/data')}?select=1&input=vod_rel_vod" href="javascript:;" title="{:lang('search_data')}">{:lang('search_data')}</a>
+                            <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('vod/data')}?select=1&input=vod_rel_vod" href="javascript:" title="{:lang('search_data')}">{:lang('search_data')}</a>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -226,7 +226,7 @@
                             <input type="text" class="layui-input" value="{$info.vod_rel_art}" placeholder="{:lang('admin/vod/rel_art_tip')}" name="vod_rel_art">
                         </div>
                         <div class="layui-input-inline ">
-                            <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('art/data')}?select=1&input=vod_rel_art" href="javascript:;" title="{:lang('search_data')}">{:lang('search_data')}</a>
+                            <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('art/data')}?select=1&input=vod_rel_art" href="javascript:" title="{:lang('search_data')}">{:lang('search_data')}</a>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -334,7 +334,7 @@
                             </fieldset>
                             <div class="screenshot_list">
                                 {volist name="$info.vod_pic_screenshot_list" id="vo"}
-                                <div data-src="{$vo['url']}"><a href="javascript:;" class="del_screenshot">{:lang('del')}</a>
+                                <div data-src="{$vo['url']}"><a href="javascript:" class="del_screenshot">{:lang('del')}</a>
                                     <img src="{$vo['url']|mac_url_img}" alt="" class="layui-upload-img screenshot-img">
                                 </div>
                                 {/volist}
@@ -351,9 +351,9 @@
 
 
                     <script>
-                        var players_arr_len = {$vod_play_list|count};
-                        var downers_arr_len = {$vod_down_list|count};
-                        var plot_arr_len = {$vod_plot_list|count};
+                        var players_arr_len = {$vod_play_list|count}
+                        var downers_arr_len = {$vod_down_list|count}
+                        var plot_arr_len = {$vod_plot_list|count}
                     </script>
 
                     <div id="player_list" class="contents">
@@ -569,7 +569,7 @@
         var form = layui.form
                 , layer = layui.layer
                 , $ = layui.jquery
-                , upload = layui.upload;;
+                , upload = layui.upload;
 
         // 验证
         form.verify({

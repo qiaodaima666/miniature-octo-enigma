@@ -3,6 +3,10 @@ namespace app\common\model;
 use think\Db;
 use think\Cache;
 use app\common\util\Pinyin;
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\Exception;
+use think\exception\DbException;
 
 class AddonMarket extends Base {
     // 设置数据表（不含前缀）
@@ -22,7 +26,7 @@ class AddonMarket extends Base {
      * 根据条件查询记录个数   作者:walle
      * @param $where
      * @return int|string
-     * @throws \think\Exception
+     * @throws Exception
      */
     public function countData($where)
     {
@@ -40,10 +44,10 @@ class AddonMarket extends Base {
      * @param string $field
      * @param int $totalshow
      * @return array
-     * @throws \think\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @throws Exception
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function listData($where,$order,$page=1,$limit=20,$start=0,$field='*',$totalshow=1)
     {

@@ -11,6 +11,7 @@
 
 namespace think;
 
+use SplFileInfo;
 use think\image\Exception as ImageException;
 use think\image\gif\Gif;
 
@@ -55,7 +56,7 @@ class Image
      */
     protected $info;
 
-    protected function __construct(\SplFileInfo $file)
+    protected function __construct(SplFileInfo $file)
     {
         //获取图像信息
         $info = @getimagesize($file->getPathname());
@@ -90,13 +91,13 @@ class Image
 
     /**
      * 打开一个图片文件
-     * @param \SplFileInfo|string $file
+     * @param SplFileInfo|string $file
      * @return Image
      */
     public static function open($file)
     {
         if (is_string($file)) {
-            $file = new \SplFileInfo($file);
+            $file = new SplFileInfo($file);
         }
         if (!$file->isFile()) {
             throw new ImageException('image file not exist');

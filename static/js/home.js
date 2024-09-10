@@ -173,7 +173,7 @@ var MAC={
     'Image':{
         'Lazyload':{
             'Show': function(){
-                try { $("img.lazy").lazyload(); }catch(e){};
+                try { $("img.lazy").lazyload(); }catch(e){}
             },
             'Box': function($id){
                 $("img.lazy").lazyload({

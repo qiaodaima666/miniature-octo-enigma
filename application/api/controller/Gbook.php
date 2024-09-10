@@ -3,6 +3,7 @@
 namespace app\api\controller;
 
 use think\Request;
+use think\response\Json;
 
 class Gbook extends Base
 {
@@ -20,7 +21,7 @@ class Gbook extends Base
      *  获取列表
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_list(Request $request)
     {

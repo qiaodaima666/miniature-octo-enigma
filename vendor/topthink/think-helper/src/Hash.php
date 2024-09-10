@@ -12,6 +12,8 @@
 namespace think\helper;
 
 
+use ErrorException;
+
 class Hash
 {
     protected static $handle = [];
@@ -38,7 +40,7 @@ class Hash
         if (empty(self::$handle[$type])) {
             $class = "\\think\\helper\\hash\\" . ucfirst($type);
             if (!class_exists($class)) {
-                throw new \ErrorException("Not found {$type} hash type!");
+                throw new ErrorException("Not found {$type} hash type!");
             }
             self::$handle[$type] = new $class();
         }

@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Annex extends Base {
     // 设置数据表（不含前缀）
@@ -51,7 +52,7 @@ class Annex extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Annex');
+        $validate = Loader::validate('Annex');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

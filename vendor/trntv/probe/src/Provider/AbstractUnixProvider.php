@@ -2,6 +2,8 @@
 
 namespace Probe\Provider;
 
+use InvalidArgumentException;
+
 /**
  * @author Eugene Terentev <eugene@terentev.net>
  */
@@ -119,7 +121,7 @@ abstract class AbstractUnixProvider extends AbstractProvider
         if (array_key_exists($interval, $la)) {
             return $la[$interval];
         } else {
-            throw new \InvalidArgumentException;
+            throw new InvalidArgumentException;
         }
     }
 

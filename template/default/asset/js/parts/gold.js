@@ -19,10 +19,10 @@ function stars(r) {
 		$("#pcm").css("width", ((parseInt(r['data'].vod_gold_3) / totalnum) * 100) + "%");
 		$("#pdm").css("width", ((parseInt(r['data'].vod_gold_2) / totalnum) * 100) + "%");
 		$("#pem").css("width", ((parseInt(r['data'].vod_gold_1) / totalnum) * 100) + "%")
-	};
+	}
 	if (r['hadpingfen'] != undefined && r['hadpingfen'] != null) {
 		hadpingfen = 1
-	};
+	}
 	var PFbai = r.data.score*10;
 	if (PFbai > 0) {
 		$("#rating-main").show();
@@ -37,7 +37,7 @@ function stars(r) {
 		$("#rating-main").hide();
 		$("#rating-kong").show();
 		$(".loading").addClass('nopingfen').html( '暂时没有人评分，赶快从左边打分吧！');
-	};
+	}
 	
 	//$("#golder").html(r['curpingfen'].golder);
 	if (curstars > 0) {
@@ -48,7 +48,7 @@ function stars(r) {
 		var arr = new Array('很差', '较差', '还行', '推荐', '力荐');
 		$("#ratewords").html(arr[curnum])
 	}
-};
+}
 			
 function gold_init(){
 	$("ul.rating-star li").each(function(i) {

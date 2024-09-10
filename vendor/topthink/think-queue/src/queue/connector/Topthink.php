@@ -11,6 +11,7 @@
 
 namespace think\queue\connector;
 
+use RuntimeException;
 use think\exception\HttpException;
 use think\queue\Connector;
 use think\Request;
@@ -179,7 +180,7 @@ class Topthink extends Connector
 
         $json_error = json_last_error();
         if ($json_error != JSON_ERROR_NONE) {
-            throw new \RuntimeException($json_error);
+            throw new RuntimeException($json_error);
         }
 
         return $data;
@@ -220,6 +221,6 @@ class Topthink extends Connector
 
     public function pop($queue = null)
     {
-        throw new \RuntimeException('pop queues not support for this type');
+        throw new RuntimeException('pop queues not support for this type');
     }
 }

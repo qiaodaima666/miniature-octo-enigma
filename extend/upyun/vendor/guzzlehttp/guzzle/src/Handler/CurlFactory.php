@@ -1,14 +1,22 @@
 <?php
 namespace GuzzleHttp\Handler;
 
+use Exception;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Promise\FulfilledPromise;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Promise\RejectedPromise;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\LazyOpenStream;
 use GuzzleHttp\TransferStats;
+use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
+use RuntimeException;
+use function GuzzleHttp\debug_resource;
+use function GuzzleHttp\is_host_in_noproxy;
+use function GuzzleHttp\Promise\rejection_for;
+use function GuzzleHttp\Psr7\stream_for;
 
 /**
  * Creates curl resources from a request
@@ -88,7 +96,7 @@ class CurlFactory implements CurlFactoryInterface
      * @param EasyHandle           $easy
      * @param CurlFactoryInterface $factory Dictates how the handle is released
      *
-     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @return PromiseInterface
      */
     public static function finish(
         callable $handler,
@@ -163,7 +171,7 @@ class CurlFactory implements CurlFactoryInterface
         // If an exception was encountered during the onHeaders event, then
         // return a rejected promise that wraps that exception.
         if ($easy->onHeadersException) {
-            return \GuzzleHttp\Promise\rejection_for(
+            return rejection_for(
                 new RequestException(
                     'An error was encountered during the on_headers event',
                     $easy->request,
@@ -186,7 +194,7 @@ class CurlFactory implements CurlFactoryInterface
             ? new ConnectException($message, $easy->request, null, $ctx)
             : new RequestException($message, $easy->request, $easy->response, null, $ctx);
 
-        return \GuzzleHttp\Promise\rejection_for($error);
+        return rejection_for($error);
     }
 
     private function getDefaultConf(EasyHandle $easy)
@@ -328,7 +336,7 @@ class CurlFactory implements CurlFactoryInterface
                 if (is_string($options['verify'])) {
                     // Throw an error if the file/folder/link path is not valid or doesn't exist.
                     if (!file_exists($options['verify'])) {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             "SSL CA bundle not found: {$options['verify']}"
                         );
                     }
@@ -358,10 +366,10 @@ class CurlFactory implements CurlFactoryInterface
         if (isset($options['sink'])) {
             $sink = $options['sink'];
             if (!is_string($sink)) {
-                $sink = \GuzzleHttp\Psr7\stream_for($sink);
+                $sink = stream_for($sink);
             } elseif (!is_dir(dirname($sink))) {
                 // Ensure that the directory exists before failing in curl.
-                throw new \RuntimeException(sprintf(
+                throw new RuntimeException(sprintf(
                     'Directory %s does not exist for sink value of %s',
                     dirname($sink),
                     $sink
@@ -376,7 +384,7 @@ class CurlFactory implements CurlFactoryInterface
         } else {
             // Use a default temp stream if no sink was set.
             $conf[CURLOPT_FILE] = fopen('php://temp', 'w+');
-            $easy->sink = Psr7\stream_for($conf[CURLOPT_FILE]);
+            $easy->sink = stream_for($conf[CURLOPT_FILE]);
         }
         $timeoutRequiresNoSignal = false;
         if (isset($options['timeout'])) {
@@ -410,7 +418,7 @@ class CurlFactory implements CurlFactoryInterface
                 if (isset($options['proxy'][$scheme])) {
                     $host = $easy->request->getUri()->getHost();
                     if (!isset($options['proxy']['no']) ||
-                        !\GuzzleHttp\is_host_in_noproxy($host, $options['proxy']['no'])
+                        !is_host_in_noproxy($host, $options['proxy']['no'])
                     ) {
                         $conf[CURLOPT_PROXY] = $options['proxy'][$scheme];
                     }
@@ -425,7 +433,7 @@ class CurlFactory implements CurlFactoryInterface
                 $cert = $cert[0];
             }
             if (!file_exists($cert)) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     "SSL certificate not found: {$cert}"
                 );
             }
@@ -439,7 +447,7 @@ class CurlFactory implements CurlFactoryInterface
                 $sslKey = $sslKey[0];
             }
             if (!file_exists($sslKey)) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     "SSL private key not found: {$sslKey}"
                 );
             }
@@ -449,7 +457,7 @@ class CurlFactory implements CurlFactoryInterface
         if (isset($options['progress'])) {
             $progress = $options['progress'];
             if (!is_callable($progress)) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     'progress client option must be callable'
                 );
             }
@@ -465,7 +473,7 @@ class CurlFactory implements CurlFactoryInterface
         }
 
         if (!empty($options['debug'])) {
-            $conf[CURLOPT_STDERR] = \GuzzleHttp\debug_resource($options['debug']);
+            $conf[CURLOPT_STDERR] = debug_resource($options['debug']);
             $conf[CURLOPT_VERBOSE] = true;
         }
     }
@@ -490,7 +498,7 @@ class CurlFactory implements CurlFactoryInterface
             if ($body->tell() > 0) {
                 $body->rewind();
             }
-        } catch (\RuntimeException $e) {
+        } catch (RuntimeException $e) {
             $ctx['error'] = 'The connection unexpectedly failed without '
                 . 'providing an error. The request would have been retried, '
                 . 'but attempting to rewind the request body failed. '
@@ -522,7 +530,7 @@ class CurlFactory implements CurlFactoryInterface
             $onHeaders = $easy->options['on_headers'];
 
             if (!is_callable($onHeaders)) {
-                throw new \InvalidArgumentException('on_headers must be callable');
+                throw new InvalidArgumentException('on_headers must be callable');
             }
         } else {
             $onHeaders = null;
@@ -540,7 +548,7 @@ class CurlFactory implements CurlFactoryInterface
                 if ($onHeaders !== null) {
                     try {
                         $onHeaders($easy->response);
-                    } catch (\Exception $e) {
+                    } catch (Exception $e) {
                         // Associate the exception with the handle and trigger
                         // a curl header write error by returning 0.
                         $easy->onHeadersException = $e;

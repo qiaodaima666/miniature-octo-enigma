@@ -89,9 +89,9 @@
                 <td>{$vo.cash_time|mac_day='color'}</td>
                 <td>{$vo.cash_time_audit|mac_day='color'}</td>
                 <td>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['cash_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['cash_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                     {if condition="$vo.cash_status neq '1'"}
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-ajax" confirm="{:lang('audit_confirm')}" data-href="{:url('audit?ids='.$vo['cash_id'])}" href="javascript:;" title="{:lang('audit')}">{:lang('audit')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-ajax" confirm="{:lang('audit_confirm')}" data-href="{:url('audit?ids='.$vo['cash_id'])}" href="javascript:" title="{:lang('audit')}">{:lang('audit')}</a>
                     {/if}
                 </td>
             </tr>

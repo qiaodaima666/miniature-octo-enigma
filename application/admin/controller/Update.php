@@ -1,5 +1,6 @@
 <?php
 namespace app\admin\controller;
+use Exception;
 use think\Db;
 use app\common\util\PclZip;
 
@@ -59,7 +60,7 @@ class Update extends Base
         $archive->PclZip($this->_save_path.$save_file);
         if(!$archive->extract(PCLZIP_OPT_PATH, '', PCLZIP_OPT_REPLACE_NEWER)) {
             echo $archive->error_string."\n";
-            echo lang('admin/update/upgrade_err').'' ."\n";;
+            echo lang('admin/update/upgrade_err').'' ."\n";
             exit;
         }
         else{
@@ -113,7 +114,7 @@ class Update extends Base
                         try {
                             Db::execute($v);
                             echo "    ---".lang('success')."\n\n";
-                        } catch (\Exception $e) {
+                        } catch (Exception $e) {
                             echo "    ---".lang('fail')."\n\n";
                         }
                         ob_flush();flush();

@@ -1,6 +1,7 @@
 <?php
 namespace Upyun\Api;
 
+use Exception;
 use GuzzleHttp\Client;
 use Upyun\Config;
 use Upyun\Signature;
@@ -17,7 +18,7 @@ class Pretreat
     public function __construct(Config $config)
     {
         if (!$config->processNotifyUrl) {
-            throw new \Exception("should config prosessNotifyUrl first.");
+            throw new Exception("should config prosessNotifyUrl first.");
         }
         $this->config = $config;
     }

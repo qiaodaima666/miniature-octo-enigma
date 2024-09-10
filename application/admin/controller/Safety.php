@@ -137,7 +137,7 @@ class Safety extends Base
                         $update = [];
                         $col_id = $tables[$si] . '_id';
                         $col_name = $tables[$si] . '_name';
-                        $val_id = $v3[$col_id];;
+                        $val_id = $v3[$col_id];
                         $val_name = strip_tags($v3[$col_name]);
                         $ck = false;
                         $where2 = [];

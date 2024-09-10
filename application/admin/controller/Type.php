@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use think\Loader;
 
 class Type extends Base
 {
@@ -61,7 +62,7 @@ class Type extends Base
     {
         if (Request()->isPost()) {
             $param = input('post.');
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

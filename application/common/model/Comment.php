@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Comment extends Base {
     // 设置数据表（不含前缀）
@@ -209,7 +210,7 @@ class Comment extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Comment');
+        $validate = Loader::validate('Comment');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

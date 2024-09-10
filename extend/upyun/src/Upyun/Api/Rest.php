@@ -4,6 +4,7 @@ namespace Upyun\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7;
+use Psr\Http\Message\ResponseInterface;
 use Upyun\Config;
 use Upyun\Signature;
 use Upyun\Util;
@@ -54,7 +55,7 @@ class Rest
     }
 
     /**
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return mixed|ResponseInterface
      */
     public function send()
     {

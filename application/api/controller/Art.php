@@ -3,7 +3,11 @@
 namespace app\api\controller;
 
 use think\Db;
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\exception\DbException;
 use think\Request;
+use think\response\Json;
 
 class Art extends Base
 {
@@ -21,7 +25,7 @@ class Art extends Base
      *  获取列表
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_list(Request $request)
     {
@@ -105,10 +109,10 @@ class Art extends Base
      * 视频文章详情
      *
      * @param Request $request
-     * @return \think\response\Json
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @return Json
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function get_detail(Request $request)
     {

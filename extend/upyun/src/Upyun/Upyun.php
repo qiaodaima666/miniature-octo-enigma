@@ -4,6 +4,7 @@
  */
 namespace Upyun;
 
+use Exception;
 use Upyun\Api\Rest;
 
 use GuzzleHttp\Client;
@@ -111,12 +112,12 @@ class Upyun
      * @return array|bool 若文件是图片则返回图片基本信息，如：`array('x-upyun-width' => 123, 'x-upyun-height' => 50, 'x-upyun-frames'
      * => 1, 'x-upyun-file-type' => 'JPEG')`，否则返回空数组。当使用异步预处理功能时，返回结果为布尔值，成功为 `true`。
      *
-     * @throws \Exception 上传失败时，抛出异常
+     * @throws Exception 上传失败时，抛出异常
      */
     public function write($path, $content, $params = array(), $withAsyncProcess = false)
     {
         if (!$content) {
-            throw new \Exception('write content can not be empty.');
+            throw new Exception('write content can not be empty.');
         }
 
         $upload = new Uploader($this->config);
@@ -139,7 +140,7 @@ class Upyun
      * @return mixed $return 当读取文件且没有设置 `$saveHandler` 参数时，返回一个字符串类型，表示文件内容；设置了 `$saveHandler` 参数时，返回布尔值
      * `true`。当读取目录时，返回一个数组，表示目录下的文件列表。目录下文件内容过多时，需要通过判断返回数组中的 `is_end` 属性，进行分页读取内容
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function read($path, $saveHandler = null, $params = array())
     {
@@ -173,7 +174,7 @@ class Upyun
      * @param string $path 云存储的文件路径
      *
      * @return bool 存在时返回 `true`，否则返回 `false`
-     * @throws \Exception
+     * @throws Exception
      */
     public function has($path)
     {
@@ -233,7 +234,7 @@ class Upyun
      * @param bool $async 是否异步删除，默认为 false，表示同步删除。当需要批量删除大量文件时，必须选择异步删除
      *
      * @return bool 删除成功返回 true，否则 false
-     * @throws \Exception 删除不存在的文件将会抛出异常
+     * @throws Exception 删除不存在的文件将会抛出异常
      */
     public function delete($path, $async = false)
     {
@@ -252,7 +253,7 @@ class Upyun
      * @param string $path 需要在又拍云存储创建的目录路径
      *
      * @return bool 创建成功返回 true，否则返回 false
-     * @throws \Exception
+     * @throws Exception
      */
     public function createDir($path)
     {
@@ -270,7 +271,7 @@ class Upyun
      * @param string $path 需要被删除的云存储文件或目录路径
      *
      * @return bool 成功返回 true，否则 false
-     * @throws \Exception
+     * @throws Exception
      */
     public function deleteDir($path)
     {
@@ -282,7 +283,7 @@ class Upyun
      *
      * @param string $path 云存储目录路径，默认为根目录，表示整个云存储服务使用的空间大小
      * @return string 存储使用量，单位字节
-     * @throws \Exception
+     * @throws Exception
      */
     public function usage($path = '/')
     {
@@ -356,7 +357,7 @@ class Upyun
      * '98adbaa52b2f63d6d7f327a0ff223348',
      * )
      * ```
-     * @throws \Exception
+     * @throws Exception
      */
     public function process($tasks, $type, $source = '')
     {
@@ -384,7 +385,7 @@ class Upyun
                 $options['app_name'] = 'jigsaw';
                 break;
             default:
-                throw new \Exception('upyun - not support process type.');
+                throw new Exception('upyun - not support process type.');
 
         }
         return $video->process($tasks, $options);

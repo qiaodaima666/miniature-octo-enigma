@@ -11,6 +11,7 @@
 
 namespace think\queue\connector;
 
+use Closure;
 use Exception;
 use think\helper\Str;
 use think\queue\Connector;
@@ -156,9 +157,9 @@ class Redis extends Connector
 
     /**
      * redis事务
-     * @param \Closure $closure
+     * @param Closure $closure
      */
-    protected function transaction(\Closure $closure)
+    protected function transaction(Closure $closure)
     {
         $this->redis->multi();
         try {

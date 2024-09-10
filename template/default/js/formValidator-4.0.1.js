@@ -47,7 +47,7 @@ $.formValidator =
 		controlOptions = controlOptions || {};
 		$.extend(settings, controlOptions);
 		//如果是精简模式，发生错误的时候，第一个错误的控件就不获得焦点
-		if(settings.tidyMode){settings.errorFocus=false};
+		if(settings.tidyMode){settings.errorFocus=false}
 		//如果填写了表单和按钮，就注册验证事件
 		if(settings.formID!=""){
 			$("#"+settings.formID).submit(function(){return $.formValidator.bindSubmit(settings);});
@@ -133,7 +133,7 @@ $.formValidator =
 	//把提示层重置成原始提示(如果有defaultPassed,应该设置为onCorrect)
 	resetTipState : function(validatorGroup)
 	{
-		if(validatorGroup == undefined){validatorGroup = "1"};
+		if(validatorGroup == undefined){validatorGroup = "1"}
 		var initConfig = $('body').data(validatorGroup);
 		$.each(initConfig.validObjects,function(){
 			var elem = this.get(0);
@@ -329,7 +329,7 @@ $.formValidator =
 			}else{
 				returnObj.isValid = true;
 				returnObj.setting = settings[0];
-				if (settings[i].validateType == "AjaxValidator"){break};
+				if (settings[i].validateType == "AjaxValidator"){break}
 			}
 		}
 		return returnObj;
@@ -338,7 +338,7 @@ $.formValidator =
 	//验证所有需要验证的对象，并返回是否验证成功（如果曾经触发过ajaxValidator，提交的时候就不触发校验，直接读取结果）
 	pageIsValid : function (validatorGroup)
 	{
-	    if(validatorGroup == undefined){validatorGroup = "1"};
+	    if(validatorGroup == undefined){validatorGroup = "1"}
 		var isValid = true,returnObj,firstErrorMessage="",errorMessage;
 		var error_tip = "^",thefirstid,name,name_list="^"; 	
 		var errorlist = new Array();
@@ -368,7 +368,7 @@ $.formValidator =
 				//相同name只校验一次
 				if (name_list.indexOf("^"+name+"^") == -1) {
 					onceValided = this.onceValided == undefined ? false : this.onceValided;
-					if(name){name_list = name_list + name + "^"};
+					if(name){name_list = name_list + name + "^"}
 					returnObj = $.formValidator.oneIsValid(this.id);
 					if (returnObj) {
 						//校验失败,获取第一个发生错误的信息和ID
@@ -377,14 +377,14 @@ $.formValidator =
 							isValid = false;
 							errorMessage = returnObj.errormsg == "" ? returnObj.setting.onError : returnObj.errormsg;
 							errorlist[errorlist.length] = errorMessage;
-							if (thefirstid == null) {thefirstid = returnObj.id};
-							if(firstErrorMessage==""){firstErrorMessage=errorMessage};
+							if (thefirstid == null) {thefirstid = returnObj.id}
+							if(firstErrorMessage==""){firstErrorMessage=errorMessage}
 						}
 						//为了解决使用同个TIP提示问题:后面的成功或失败都不覆盖前面的失败
 						if (!initConfig.alertMessage) {
 							var tipID = this.settings[0].tipID;
 							if (error_tip.indexOf("^" + tipID + "^") == -1) {
-								if (!returnObj.isValid) {error_tip = error_tip + tipID + "^"};
+								if (!returnObj.isValid) {error_tip = error_tip + tipID + "^"}
 								$.formValidator.showMessage(returnObj);
 							}
 						}
@@ -403,7 +403,7 @@ $.formValidator =
 		else
 		{
 			initConfig.onError(firstErrorMessage, $("#" + thefirstid).get(0), errorlist);
-			if (thefirstid && initConfig.errorFocus) {$("#" + thefirstid).focus()};
+			if (thefirstid && initConfig.errorFocus) {$("#" + thefirstid).focus()}
 		}
 		initConfig.status="init";
 		return !initConfig.debug && isValid;
@@ -468,15 +468,15 @@ $.formValidator =
 				}
 			},
 			complete : function(jqXHR, textStatus){
-				if(setting.buttons && setting.buttons.length > 0){setting.buttons.attr({"disabled":false})};
+				if(setting.buttons && setting.buttons.length > 0){setting.buttons.attr({"disabled":false})}
 				setting.complete(jqXHR, textStatus);
 			}, 
 			beforeSend : function(jqXHR, configs){
 				//本控件如果正在校验，就中断上次
-				if (this.lastXMLHttpRequest) {this.lastXMLHttpRequest.abort()};
+				if (this.lastXMLHttpRequest) {this.lastXMLHttpRequest.abort()}
 				this.lastXMLHttpRequest = jqXHR;
 				//再服务器没有返回数据之前，先回调提交按钮
-				if(setting.buttons && setting.buttons.length > 0){setting.buttons.attr({"disabled":true})};
+				if(setting.buttons && setting.buttons.length > 0){setting.buttons.attr({"disabled":true})}
 				var isValid = setting.beforeSend(jqXHR,configs);
 				if(isValid)
 				{
@@ -607,9 +607,9 @@ $.formValidator =
 				else if (type =="date" || type =="datetime")
 				{
 					var isok = false;
-					if(type=="date"){lb_go_on = isDate(val)};
-					if(type=="datetime"){lb_go_on = isDate(val)};
-					if(lb_go_on){val = new Date(val);setting.min=new Date(setting.min);setting.max=new Date(setting.max);};
+					if(type=="date"){lb_go_on = isDate(val)}
+					if(type=="datetime"){lb_go_on = isDate(val)}
+					if(lb_go_on){val = new Date(val);setting.min=new Date(setting.min);setting.max=new Date(setting.max);}
 				}else{
 					stype = (typeof setting.min);
 					if(stype =="number")
@@ -662,8 +662,8 @@ $.formValidator =
 		if(ls_dataType=="date" || ls_dataType=="datetime")
 		{
 			var isok = false;
-			if(ls_dataType=="date"){isok = (isDate(curvalue) && isDate(ls_data))};
-			if(ls_dataType=="datetime"){isok = (isDateTime(curvalue) && isDateTime(ls_data))};
+			if(ls_dataType=="date"){isok = (isDate(curvalue) && isDate(ls_data))}
+			if(ls_dataType=="datetime"){isok = (isDateTime(curvalue) && isDateTime(ls_data))}
 			if(isok){
 				curvalue = new Date(curvalue);
 				ls_data = new Date(ls_data)
@@ -760,7 +760,7 @@ $.fn.formValidator = function(cs)
 
 	//获取该校验组的全局配置信息
 	cs = cs || {};
-	if(cs.validatorGroup == undefined){cs.validatorGroup = "1"};
+	if(cs.validatorGroup == undefined){cs.validatorGroup = "1"}
 	
 	var initConfig = $('body').data(cs.validatorGroup);
 	
@@ -768,10 +768,10 @@ $.fn.formValidator = function(cs)
 	initConfig.validCount += 1;
 	
 	//如果为精简模式，tipCss要重新设置初始值
-	if(initConfig.tidyMode){setting.tipCss = {"left" : "2px","width":"22px","height":"22px","display":"none"}};
+	if(initConfig.tidyMode){setting.tipCss = {"left" : "2px","width":"22px","height":"22px","display":"none"}}
 	
 	//弹出消息提示模式，自动修复错误
-	if(initConfig.alertMessage){setting.autoModify=true};
+	if(initConfig.alertMessage){setting.autoModify=true}
 	
 	//先合并整个配置(深度拷贝)
 	$.extend(true,setting, cs);
@@ -870,7 +870,7 @@ $.fn.formValidator = function(cs)
 						if(auto)
 						{
 							$(this).val(this.validValueOld);
-							if(!initConfig.alertMessage){$.formValidator.setTipState(this,"onShow",setting.onShow)};
+							if(!initConfig.alertMessage){$.formValidator.setTipState(this,"onShow",setting.onShow)}
 						}
 						else
 						{
@@ -889,7 +889,7 @@ $.fn.formValidator = function(cs)
 				focus: function(){	
 					if (!initConfig.alertMessage) {
 						$.formValidator.setTipState(this, "onFocus", setting.onFocus)
-					};
+					}
 				},
 				//失去焦点
 				blur: function(){$(this).trigger("change")},

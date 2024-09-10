@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Order extends Base {
     // 设置数据表（不含前缀）
@@ -52,7 +53,7 @@ class Order extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Order');
+        $validate = Loader::validate('Order');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

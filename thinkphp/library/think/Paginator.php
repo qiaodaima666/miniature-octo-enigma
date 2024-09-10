@@ -14,6 +14,7 @@ namespace think;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
+use DomainException;
 use IteratorAggregate;
 use JsonSerializable;
 use Traversable;
@@ -162,7 +163,7 @@ abstract class Paginator implements ArrayAccess, Countable, IteratorAggregate, J
     public function total()
     {
         if ($this->simple) {
-            throw new \DomainException('not support total');
+            throw new DomainException('not support total');
         }
         return $this->total;
     }
@@ -180,7 +181,7 @@ abstract class Paginator implements ArrayAccess, Countable, IteratorAggregate, J
     public function lastPage()
     {
         if ($this->simple) {
-            throw new \DomainException('not support last');
+            throw new DomainException('not support last');
         }
         return $this->lastPage;
     }

@@ -37,11 +37,11 @@
     <div class="layui-col-md4" style="padding: 20px">
         <div style="height: 140px;line-height: 140px;text-align: center">
             {if condition="$info.toll eq 1"}
-            <a class="j-iframe layui-btn mgl-20" data-full="1" data-href="{:url('marketlicense')}?id={$info.id}&type=plugins" href="javascript:;">{:lang('admin/addon/marketinfo/title4')}</a>
+            <a class="j-iframe layui-btn mgl-20" data-full="1" data-href="{:url('marketlicense')}?id={$info.id}&type=plugins" href="javascript:">{:lang('admin/addon/marketinfo/title4')}</a>
             {/if}
             {if condition="$info.toll eq 0"}
             <a class="layui-btn mgl-20" onclick="ondown('{$info.source}')">{:lang('admin/addon/marketinfo/title5')}</a>
-            <a class="j-iframe layui-btn mgl-20" data-full="1" data-href="{:url('downandinstalladdon')}?down_url={$info.source}&file_name={$info.file_name}&id={$info.id}&type=plugins" href="javascript:;">{:lang('admin/addon/marketinfo/title6')}</a>
+            <a class="j-iframe layui-btn mgl-20" data-full="1" data-href="{:url('downandinstalladdon')}?down_url={$info.source}&file_name={$info.file_name}&id={$info.id}&type=plugins" href="javascript:">{:lang('admin/addon/marketinfo/title6')}</a>
             {/if}
         </div>
         <div style="margin-top: 40px">
@@ -49,7 +49,7 @@
             <div style="margin-top: 20px"><p class="layui-inline w150">{:lang('admin/addon/marketinfo/title8')}:</p><p class="layui-inline">{$info.update_time}</p></div>
             <div style="margin-top: 20px"><p class="layui-inline w150">{:lang('admin/addon/marketinfo/title9')}:</p><p class="layui-inline">{$info.download_num}</p></div>
             <div style="margin-top: 20px"><p class="layui-inline w150">{:lang('admin/addon/marketinfo/title10')}:</p><p class="layui-inline">{$info.langs}</p></div>
-            <p style="margin-top: 20px"><a class="j-iframe" data-full="1" data-href="{:url('marketfeedback')}?id={$info.id}&type=plugins" href="javascript:;" title="{:lang('admin/addon/marketinfo/title11')}">{:lang('admin/addon/marketinfo/title11')}>></a></p>
+            <p style="margin-top: 20px"><a class="j-iframe" data-full="1" data-href="{:url('marketfeedback')}?id={$info.id}&type=plugins" href="javascript:" title="{:lang('admin/addon/marketinfo/title11')}">{:lang('admin/addon/marketinfo/title11')}>></a></p>
             <p style="margin-top: 40px">{:lang('admin/addon/marketinfo/title12')}</p>
             <div style="margin-top: 20px"><p class="layui-inline w150">QQ:</p><p class="layui-inline">{$info.qq}</p></div>
             <div style="margin-top: 20px"><p class="layui-inline w150">{:lang('admin/addon/marketinfo/title13')}:</p><p class="layui-inline">{$info.wechat}</p></div>

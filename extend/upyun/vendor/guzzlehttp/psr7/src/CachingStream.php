@@ -1,6 +1,7 @@
 <?php
 namespace GuzzleHttp\Psr7;
 
+use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 
 /**
@@ -54,7 +55,7 @@ class CachingStream implements StreamInterface
             }
             $byte = $size + $offset;
         } else {
-            throw new \InvalidArgumentException('Invalid whence');
+            throw new InvalidArgumentException('Invalid whence');
         }
 
         $diff = $byte - $this->stream->getSize();

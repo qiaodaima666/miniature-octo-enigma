@@ -1,6 +1,9 @@
 <?php
 namespace app\common\extend\sms;
 
+use Exception;
+use stdClass;
+
 class Qcloud {
 
     public $name = '腾讯云短信';
@@ -72,7 +75,7 @@ class Qcloud {
         $i = 0;
         $tel = array();
         do {
-            $telElement = new \stdClass();
+            $telElement = new stdClass();
             $telElement->nationcode = $nationCode;
             $telElement->mobile = $phoneNumbers[$i];
             array_push($tel, $telElement);
@@ -183,8 +186,8 @@ class Qcloud {
         $curTime = time();
         $wholeUrl = $this->url . "?sdkappid=" . $this->appid . "&random=" . $random;
         // 按照协议组织 post 包体
-        $data = new \stdClass();
-        $tel = new \stdClass();
+        $data = new stdClass();
+        $tel = new stdClass();
         $tel->nationcode = "".$nationCode;
         $tel->mobile = "".$phoneNumber;
 
@@ -221,7 +224,7 @@ class Qcloud {
             }
             return ['code'=>101,'msg'=>$rsp['errmsg']];
         }
-        catch(\Exception $e) {
+        catch(Exception $e) {
             return ['code'=>102,'msg'=>'发生异常请重试'];
         }
     }

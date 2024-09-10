@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use Probe\ProviderFactory;
 use think\Hook;
 use think\Lang;
+use think\Loader;
 
 class Index extends Base
 {
@@ -217,7 +218,7 @@ class Index extends Base
     {
         if (request()->isPost()) {
             $param = input();
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if (!$validate->check($param)) {
                 return $this->error($validate->getError());
             }

@@ -777,7 +777,7 @@ class Make extends Base
                 $GLOBALS['aid'] = mac_get_aid('vod','detail');
 
                 $_REQUEST['id'] = $v['vod_id'];
-                echo $v['vod_name'].'&nbsp;';;
+                echo $v['vod_name'].'&nbsp;';
                 if(!empty($v['vod_play_from'])) {
                     $v['vod_play_list'] = mac_play_list($v['vod_play_from'], $v['vod_play_url'], $v['vod_play_server'], $v['vod_play_note'],'play');
                     $v['vod_play_total'] =  count($v['vod_play_list']);

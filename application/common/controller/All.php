@@ -201,7 +201,7 @@ class All extends Controller
         if(empty($info)) {
             $res = mac_label_actor_detail($param);
             if ($res['code'] > 1) {
-                $this->page_error($res['msg']);;
+                $this->page_error($res['msg']);
             }
             $info = $res['info'];
         }
@@ -252,7 +252,7 @@ class All extends Controller
         if(empty($info)) {
             $res = mac_label_role_detail($param);
             if ($res['code'] > 1) {
-                $this->page_error($res['msg']);;
+                $this->page_error($res['msg']);
             }
             $info = $res['info'];
         }
@@ -326,7 +326,7 @@ class All extends Controller
         if(empty($info)) {
             $res = mac_label_topic_detail($param);
             if ($res['code'] > 1) {
-                $this->page_error($res['msg']);;
+                $this->page_error($res['msg']);
             }
             $info = $res['info'];
         }
@@ -346,7 +346,7 @@ class All extends Controller
         if(empty($info)) {
             $res = mac_label_art_detail($param);
             if ($res['code'] > 1) {
-                $this->page_error($res['msg']);;
+                $this->page_error($res['msg']);
             }
             $info = $res['info'];
         }

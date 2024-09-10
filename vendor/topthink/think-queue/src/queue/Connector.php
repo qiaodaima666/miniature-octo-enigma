@@ -12,6 +12,7 @@
 namespace think\queue;
 
 use InvalidArgumentException;
+use RuntimeException;
 
 abstract class Connector
 {
@@ -25,7 +26,7 @@ abstract class Connector
 
     public function marshal()
     {
-        throw new \RuntimeException('pop queues not support for this type');
+        throw new RuntimeException('pop queues not support for this type');
     }
 
     protected function createPayload($job, $data = '', $queue = null)

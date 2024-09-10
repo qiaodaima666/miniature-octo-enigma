@@ -3,6 +3,9 @@ namespace Qiniu\Storage;
 
 use Qiniu\Http\Client;
 use Qiniu\Http\Error;
+use function Qiniu\crc32_data;
+use function Qiniu\crc32_file;
+use function Qiniu\explodeUpToken;
 
 final class FormUploader
 {
@@ -42,7 +45,7 @@ final class FormUploader
         }
 
         //enable crc32 check by default
-        $fields['crc32'] = \Qiniu\crc32_data($data);
+        $fields['crc32'] = crc32_data($data);
 
         if ($params) {
             foreach ($params as $k => $v) {
@@ -50,7 +53,7 @@ final class FormUploader
             }
         }
 
-        list($accessKey, $bucket, $err) = \Qiniu\explodeUpToken($upToken);
+        list($accessKey, $bucket, $err) = explodeUpToken($upToken);
         if ($err != null) {
             return array(null, $err);
         }
@@ -96,7 +99,7 @@ final class FormUploader
             $fields['key'] = $key;
         }
 
-        $fields['crc32'] = \Qiniu\crc32_file($filePath);
+        $fields['crc32'] = crc32_file($filePath);
 
         if ($params) {
             foreach ($params as $k => $v) {
@@ -106,7 +109,7 @@ final class FormUploader
         $fields['key'] = $key;
         $headers = array('Content-Type' => 'multipart/form-data');
 
-        list($accessKey, $bucket, $err) = \Qiniu\explodeUpToken($upToken);
+        list($accessKey, $bucket, $err) = explodeUpToken($upToken);
         if ($err != null) {
             return array(null, $err);
         }

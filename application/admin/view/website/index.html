@@ -101,8 +101,8 @@
                 <a data-href="{:url('index/select')}?tab=website&col=website_hits&tpl=select_hits&url=website/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('hits')}</a>
                 <a data-href="{:url('index/select')}?tab=website&col=website_status&tpl=select_status&url=website/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('status')}</a>
                 <a data-href="{:url('index/select')}?tab=website&col=website_lock&tpl=select_lock&url=website/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('lock')}</a>
-                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('images/opt?tab=website')}" href="javascript:;" title="{:lang('pic_sync')}"><i class="layui-icon">&#xe620;</i>{:lang('pic_sync')}</a>
-                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-checkbox="true" data-href="{:url('make/make?ac=info&tab=website')}" href="javascript:;" title="{:lang('make_page')}"><i class="layui-icon">&#xe620;</i>{:lang('make_page')}</a>
+                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('images/opt?tab=website')}" href="javascript:" title="{:lang('pic_sync')}"><i class="layui-icon">&#xe620;</i>{:lang('pic_sync')}</a>
+                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-checkbox="true" data-href="{:url('make/make?ac=info&tab=website')}" href="javascript:" title="{:lang('make_page')}"><i class="layui-icon">&#xe620;</i>{:lang('make_page')}</a>
                 {if condition="$param.select eq 1"}
                 <a data-href="" onclick="parent.onSelectResult('{$param.input}',$('.checkbox-ids:checked'))" class="pear-btn pear-btn-primary pear-btn-md">{:lang('select_return')}</a>
                 {/if}
@@ -149,10 +149,10 @@
                 <td>{if condition="$vo.ismake eq 1"}<a target="_blank" class="layui-badge " href="{:mac_url_website_detail($vo)}">Y</a>{else/}<a class="layui-badge" href="{:url('make/make?ac=info&tab=website')}?ids={$vo.website_id}&ref=1">N</a>{/if}</td>
                 <td>{$vo.website_time|mac_day='color'}</td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('visit/index?mid=11').'?wd='.parse_url($vo['website_jumpurl'])['host']}" href="javascript:;" title="">{:lang('referer')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-ajax" data-href="{:url('index/check_back_link')}?url={$vo['website_jumpurl']}" refresh="no" href="javascript:;" title="{:lang('detect')}">{:lang('detect')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info?id='.$vo['website_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['website_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('visit/index?mid=11').'?wd='.parse_url($vo['website_jumpurl'])['host']}" href="javascript:" title="">{:lang('referer')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-ajax" data-href="{:url('index/check_back_link')}?url={$vo['website_jumpurl']}" refresh="no" href="javascript:" title="{:lang('detect')}">{:lang('detect')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info?id='.$vo['website_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['website_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
-use \think\Request;
+use think\Request;
 
 class Comment extends Base
 {

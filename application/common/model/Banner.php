@@ -4,6 +4,7 @@ namespace app\common\model;
 
 use think\Cache;
 use think\Db;
+use think\Loader;
 
 class Banner extends Base
 {
@@ -94,7 +95,7 @@ class Banner extends Base
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Banner');
+        $validate = Loader::validate('Banner');
         if (!$validate->check($data)) {
             return ['code' => 1001, 'msg' => lang('param_err') . '：' . $validate->getError()];
         }

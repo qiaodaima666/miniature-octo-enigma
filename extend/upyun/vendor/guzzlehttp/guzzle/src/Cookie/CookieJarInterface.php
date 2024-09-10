@@ -1,6 +1,8 @@
 <?php
 namespace GuzzleHttp\Cookie;
 
+use Countable;
+use IteratorAggregate;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -14,7 +16,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @link http://docs.python.org/2/library/cookielib.html Inspiration
  */
-interface CookieJarInterface extends \Countable, \IteratorAggregate
+interface CookieJarInterface extends Countable, IteratorAggregate
 {
     /**
      * Create a request with added cookie headers.

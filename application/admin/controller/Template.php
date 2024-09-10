@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use think\Loader;
 
 class Template extends Base
 {
@@ -178,12 +179,12 @@ class Template extends Base
         $this->assign('filter',$filter);
 
         if (Request()->isPost()) {
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }
 
-            $validate = \think\Loader::validate('Template');
+            $validate = Loader::validate('Template');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

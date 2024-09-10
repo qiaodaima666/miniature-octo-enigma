@@ -1,6 +1,8 @@
 <?php
 namespace app\common\util;
 
+use CURLFile;
+
 class SinaUpload
 {
     public $_config=[];
@@ -107,7 +109,7 @@ class SinaUpload
         if($multipart) {
             $url .= '&cb=http://weibo.com/aj/static/upimgback.html?_wv=5&callback=STK_ijax_'.time();
             if (class_exists('CURLFile')) {     // php 5.5
-                $post['pic1'] = new \CURLFile(realpath($file));
+                $post['pic1'] = new CURLFile(realpath($file));
             } else {
                 $post['pic1'] = '@'.realpath($file);
             }

@@ -5,7 +5,11 @@ namespace app\api\controller;
 use think\Controller;
 use think\Cache;
 use think\Db;
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\exception\DbException;
 use think\Request;
+use think\response\Json;
 use think\Validate;
 
 class Vod extends Base
@@ -24,7 +28,7 @@ class Vod extends Base
      *  获取视频列表
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_list(Request $request)
     {
@@ -101,10 +105,10 @@ class Vod extends Base
      * 视频详细信息
      *
      * @param Request $request
-     * @return \think\response\Json
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @return Json
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function get_detail(Request $request)
     {
@@ -130,10 +134,10 @@ class Vod extends Base
     /**
      * 获取视频的年份
      *
-     * @return \think\response\Json
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @return Json
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function get_year(Request $request)
     {
@@ -167,10 +171,10 @@ class Vod extends Base
     /**
      * 获取该视频类型名称
      *
-     * @return \think\response\Json
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @return Json
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function get_class(Request $request)
     {
@@ -204,10 +208,10 @@ class Vod extends Base
     /**
      * 获取该视频类型的地区
      *
-     * @return \think\response\Json
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @return Json
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function get_area(Request $request)
     {

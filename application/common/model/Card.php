@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Card extends Base {
     // 设置数据表（不含前缀）
@@ -57,7 +58,7 @@ class Card extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Card');
+        $validate = Loader::validate('Card');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

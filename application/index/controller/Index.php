@@ -2,6 +2,10 @@
 namespace app\index\controller;
 
 use think\Cache;
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\Exception;
+use think\exception\DbException;
 
 class Index extends Base
 {
@@ -25,10 +29,10 @@ class Index extends Base
 
     /**
      * @return mixed|string|string[]|null
-     * @throws \think\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
-     * @throws \think\exception\DbException
+     * @throws Exception
+     * @throws DataNotFoundException
+     * @throws ModelNotFoundException
+     * @throws DbException
      */
     public function index()
     {

@@ -40,7 +40,7 @@ class Base extends All
     public function _empty()
     {
         header("HTTP/1.0 404 Not Found");
-        echo  '<script>setTimeout(function () {location.href="'.MAC_BASE_URL_FULL.'";},'.(2000).');</script>';
+        echo  '<script>setTimeout(function () {location.href="'.MAC_BASE_URL_FULL.'";},'.(2000). ')</script>';
         $msg = lang_frontend('page_not_found');
         abort(404,$msg);
         exit;

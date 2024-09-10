@@ -51,9 +51,9 @@
                     <input id="txt{$key}" type="text" value='<script src="{literal}{$maccms.path_ads}{/literal}{$vo.name}"></script>' size="40">
                 </td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-clipboard" data-clipboard-target="#txt{$key}" href="javascript:;" title="{:lang('copy')}">{:lang('copy')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info')}?fpath={$vo.path}&fname={$vo.name}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del')}?fname={$vo.fullname}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-clipboard" data-clipboard-target="#txt{$key}" href="javascript:" title="{:lang('copy')}">{:lang('copy')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info')}?fpath={$vo.path}&fname={$vo.name}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del')}?fname={$vo.fullname}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

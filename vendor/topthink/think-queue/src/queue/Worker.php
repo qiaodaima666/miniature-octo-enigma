@@ -62,7 +62,7 @@ class Worker
 
     /**
      * Process a given job from the queue.
-     * @param \think\queue\Job $job
+     * @param Job $job
      * @param  int             $maxTries
      * @param  int             $delay
      * @return array
@@ -89,7 +89,7 @@ class Worker
 
     /**
      * Log a failed job into storage.
-     * @param  \Think\Queue\Job $job
+     * @param Job $job
      * @return array
      */
     protected function logFailedJob(Job $job)

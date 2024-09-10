@@ -2,6 +2,7 @@
 namespace app\common\model;
 
 use app\common\util\Ftp as ftpOper;
+use Exception;
 
 class Upload extends Base {
 
@@ -199,7 +200,7 @@ class Upload extends Base {
                 $image->thumb($t_size[0], $t_size[1], 6)->save('./' . $new_file);
                 $file_size = round(filesize('./' .$new_file)/1024, 2);
             }
-            catch(\Exception $e){
+            catch(Exception $e){
                 return self::upload_return(lang('admin/upload/make_thumb_faild'), $param['from']);
             }
             $update = [];

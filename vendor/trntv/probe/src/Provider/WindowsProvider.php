@@ -2,6 +2,10 @@
 
 namespace Probe\Provider;
 
+use COM;
+use Exception;
+use VARIANT;
+
 /**
  * Windows information provider
  * @author Eugene Terentev <eugene@terentev.net>
@@ -22,12 +26,12 @@ class WindowsProvider extends AbstractProvider
     public $wmiPassword;
 
     /**
-     * @var \COM
+     * @var COM
      */
     protected $wmiConnection;
 
     /**
-     * @var \VARIANT
+     * @var VARIANT
      */
     protected $cpuInfo;
 
@@ -52,7 +56,7 @@ class WindowsProvider extends AbstractProvider
 
     /**
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public function getArchitecture()
     {
@@ -98,7 +102,7 @@ class WindowsProvider extends AbstractProvider
 
     /**
      * @return int|null
-     * @throws \Exception
+     * @throws Exception
      */
     public function getUptime()
     {
@@ -110,7 +114,7 @@ class WindowsProvider extends AbstractProvider
 
     /**
      * @return mixed string|array
-     * @throws \Exception
+     * @throws Exception
      */
     public function getLoadAverage()
     {
@@ -167,7 +171,7 @@ class WindowsProvider extends AbstractProvider
     }
 
     /**
-     * @return \VARIANT
+     * @return VARIANT
      */
     public function getCpuInfo()
     {
@@ -179,7 +183,7 @@ class WindowsProvider extends AbstractProvider
 
     /**
      * @return bool|int
-     * @throws \Exception
+     * @throws Exception
      */
     public function getTotalMem()
     {
@@ -195,7 +199,7 @@ class WindowsProvider extends AbstractProvider
 
     /**
      * @return bool|int
-     * @throws \Exception
+     * @throws Exception
      */
     public function getFreeMem()
     {
@@ -268,12 +272,12 @@ class WindowsProvider extends AbstractProvider
     }
 
     /**
-     * @return \COM
+     * @return COM
      */
     protected function getWMI()
     {
         if ($this->wmiConnection === null) {
-            $wmiLocator = new \COM('WbemScripting.SWbemLocator');
+            $wmiLocator = new COM('WbemScripting.SWbemLocator');
             try {
                 $this->wmiConnection = $wmiLocator->ConnectServer(
                     $this->wmiHost,
@@ -282,7 +286,7 @@ class WindowsProvider extends AbstractProvider
                     $this->wmiPassword
                 );
                 $this->wmiConnection->Security_->impersonationLevel = 3;
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 if ($e->getCode() == '-2147352567') {
                     $this->wmiConnection = $wmiLocator->ConnectServer($this->wmiHosthost, 'root\CIMV2', null, null);
                     $this->wmiConnection->Security_->impersonationLevel = 3;

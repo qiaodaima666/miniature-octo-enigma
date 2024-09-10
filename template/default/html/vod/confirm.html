@@ -28,11 +28,11 @@
         <div class="weui-btn">
         {if condition="$user.group.group_id eq 1"}
 		<p class="weui-p">
-			<a href="javascript:;" data-lang="play_msdl" class="mac_user" target="_blank">{:lang_web('play_msdl')}</a>
+			<a href="javascript:" data-lang="play_msdl" class="mac_user" target="_blank">{:lang_web('play_msdl')}</a>
 		</p>
         {else/}
 		<p class="weui-p">
-			<a href="javascript:;" data-lang="play_qrgm" onclick="MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-mid="1" data-type="{if condition="$obj.player_info.flag eq 'play'"}4{else/}5{/if}">{:lang_web('play_qrgm')}</a>
+			<a href="javascript:" data-lang="play_qrgm" onclick="MAC.User.BuyPopedom(this)" data-id="{$obj.vod_id}" data-sid="{$param.sid}" data-nid="{$param.nid}" data-mid="1" data-type="{if condition=" $obj.player_info.flag eq 'play'"}4{else/}5{/if}">{:lang_web('play_qrgm')}</a>
 		</p>
         <p class="weui-p">
 			<a class="weui-a" data-lang="play_mscz" href="{:url('user/buy')}" target="_blank">{:lang_web('play_mscz')}</a>

@@ -509,7 +509,7 @@
         if (scope !== 'local') {
           return option.callback();
         }
-        return;
+
       } else {
         var local = (scope !== 'global') && (cm && cm.state.vim.options[name]);
         return (local || (scope !== 'local') && option || {}).value;
@@ -3440,7 +3440,7 @@
               if (wordStart == cur.ch && lineNum == cur.line &&
                   wordEnd == wordStart + dir) {
                 // We started at the end of a word. Find the next one.
-                continue;
+
               } else {
                 return {
                   from: Math.min(wordStart, wordEnd + 1),

@@ -11,6 +11,8 @@
 
 namespace think\image\gif;
 
+use Exception;
+
 class Gif
 {
     /**
@@ -31,7 +33,7 @@ class Gif
      *
      * @param string $src GIF图片数据
      * @param string $mod 图片数据类型
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct($src = null, $mod = 'url')
     {
@@ -44,8 +46,8 @@ class Gif
                 $de           = new Decoder($src);
                 $this->frames = $de->getFrames();
                 $this->delays = $de->getDelays();
-            } catch (\Exception $e) {
-                throw new \Exception("解码GIF图片出错");
+            } catch (Exception $e) {
+                throw new Exception("解码GIF图片出错");
             }
         }
     }

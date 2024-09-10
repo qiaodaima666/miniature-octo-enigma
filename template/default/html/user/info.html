@@ -115,7 +115,7 @@
 						{if condition="$obj.user_email neq ''"}
 							<p><span class="xiang" data-lang="user_email">{:lang_web('user_email')}</span>
 								<input type="text" name="user_email" class="member-input wt-input"  readonly="readonly" value="{$obj.user_email}">
-								<a class="bind-a btn_unbind" data-lang="user_unbound" ac="email" href="javascript:;">{:lang_web('user_unbound')}</a></p>
+								<a class="bind-a btn_unbind" data-lang="user_unbound" ac="email" href="javascript:">{:lang_web('user_unbound')}</a></p>
 						{else/}
 							<p><span class="xiang" data-lang="user_email">{:lang_web('user_email')}</span>
 								<input type="text" data-placeholder="user_place_email" name="user_email" class="member-input wt-input" value="" placeholder="{:lang_web('user_place_email')}">
@@ -126,7 +126,7 @@
 							{if condition="$obj.user_phone neq ''"}
 							<p><span class="xiang" data-lang="user_phone">{:lang_web('user_phone')}</span>
 								<input type="text" name="user_phone" class="member-input wt-input" readonly="readonly" value="{$obj.user_phone}">
-								<a class="bind-a btn_unbind" ac="phone" href="javascript:;" data-lang="user_unbound">{:lang_web('user_unbound')}</a></p>
+								<a class="bind-a btn_unbind" ac="phone" href="javascript:" data-lang="user_unbound">{:lang_web('user_unbound')}</a></p>
 							{else/}
 							<p>
 								<span class="xiang" data-lang="user_phone">{:lang_web('user_phone')}</span>

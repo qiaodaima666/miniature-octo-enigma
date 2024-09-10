@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use SplFileInfo;
 use think\Image;
 
 class TextTest extends TestCase
@@ -21,7 +22,7 @@ class TextTest extends TestCase
 
         $image->text('test', TEST_PATH . 'images/test.ttf', 12)->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -35,7 +36,7 @@ class TextTest extends TestCase
 
         $image->text('test', TEST_PATH . 'images/test.ttf', 12)->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -49,7 +50,7 @@ class TextTest extends TestCase
 
         $image->text('test', TEST_PATH . 'images/test.ttf', 12)->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 

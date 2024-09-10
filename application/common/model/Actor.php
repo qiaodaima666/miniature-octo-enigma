@@ -3,6 +3,7 @@ namespace app\common\model;
 use think\Db;
 use think\Cache;
 use app\common\util\Pinyin;
+use think\Loader;
 
 class Actor extends Base {
     // 设置数据表（不含前缀）
@@ -379,7 +380,7 @@ class Actor extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Actor');
+        $validate = Loader::validate('Actor');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use SplFileInfo;
 use think\Image;
 
 class RotateTest extends TestCase
@@ -20,7 +21,7 @@ class RotateTest extends TestCase
         $image    = Image::open($this->getJpeg());
         $image->rotate(90)->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -33,7 +34,7 @@ class RotateTest extends TestCase
         $image    = Image::open($this->getGif());
         $image->rotate(90)->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 

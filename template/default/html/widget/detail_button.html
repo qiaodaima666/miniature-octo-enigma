@@ -30,12 +30,12 @@
 {if condition="($obj.vod_play_list eq 0) OR ($obj.vod_down_list eq 0)"}
     {if condition="$tplconfig['theme']['weixin']['btn'] eq 1"}
 	<div class="playbtn o_bg{if condition="$obj.vod_down_list gt 0"} btn-w{/if}">
-		<a class="btn_wxgzh btn btn_primary" href="javascript:;"><i class="iconfont">&#xe63e;</i>&nbsp; <span data-lang="string_play_wxgk">{:lang_web('string_play_wxgk')}</span> </a>
+		<a class="btn_wxgzh btn btn_primary" href="javascript:"><i class="iconfont">&#xe63e;</i>&nbsp; <span data-lang="string_play_wxgk">{:lang_web('string_play_wxgk')}</span> </a>
 	</div>
 	{else}
 	<div class="playbtn o_like" >
         {if condition="$GLOBALS['config']['user']['status'] eq 1"}
-	    <a class="btn btn_like digg_link" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:;"><i class="iconfont">&#xe655;</i>&nbsp; <span data-lang="string_play_xh">{:lang_web('string_play_xh')} </span> &nbsp;<em class="digg_num">{$obj.vod_up}</em></a>
+	    <a class="btn btn_like digg_link" data-id="{$obj.vod_id}" data-mid="{$maccms.mid}" data-type="up" href="javascript:"><i class="iconfont">&#xe655;</i>&nbsp; <span data-lang="string_play_xh">{:lang_web('string_play_xh')} </span> &nbsp;<em class="digg_num">{$obj.vod_up}</em></a>
 	    {/if}
     </div>
     {/if}

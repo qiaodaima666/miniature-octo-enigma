@@ -7,6 +7,8 @@
 '--------------------------------------------------------
 */
 
+use think\App;
+
 header('Content-Type:text/html;charset=utf-8');
 // 检测PHP环境
 if(version_compare(PHP_VERSION,'5.5.0','<'))  die('PHP版本需要>=5.5，请升级【PHP version requires > = 5.5，please upgrade】');
@@ -38,7 +40,7 @@ if (!@mb_check_encoding($_SERVER['PATH_INFO'], 'utf-8')) {
 
 // 环境检测
 require ROOT_PATH . 'thinkphp/base.php';
-$run = \think\App::run();
+$run = App::run();
 if(env('app_environment', 'production') == 'production' && strpos($_SERVER["SCRIPT_NAME"],'/admin.php') !== false) {
     echo '请将后台入口文件admin.php改名,避免被黑客入侵攻击【Please rename the background entry file admin.php to avoid being hacked】';
     exit;

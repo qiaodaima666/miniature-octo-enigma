@@ -1,6 +1,8 @@
 <?php
 namespace app\common\extend\upload;
 
+use CURLFile;
+
 class Alibaba
 {
     public $name = '阿里巴巴云存储';
@@ -15,7 +17,7 @@ class Alibaba
         $data['scene'] = 'aeMessageCenterV2ImageRule';
         $data['name'] = 'player.jpg';
         if (class_exists('CURLFile')) {
-            $data['file'] = new \CURLFile(realpath($file_path));
+            $data['file'] = new CURLFile(realpath($file_path));
         } else {
             $data['file'] = '@'.realpath($file_path);
         }

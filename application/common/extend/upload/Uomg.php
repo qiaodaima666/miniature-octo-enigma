@@ -1,6 +1,8 @@
 <?php
 namespace app\common\extend\upload;
 
+use CURLFile;
+
 class Uomg
 {
     public $name = '优启梦云存储';
@@ -22,7 +24,7 @@ class Uomg
         $data['file'] = 'multipart';
 
         if (class_exists('CURLFile')) {
-            $data['Filedata'] = new \CURLFile(realpath($file_path));
+            $data['Filedata'] = new CURLFile(realpath($file_path));
         } else {
             $data['Filedata'] = '@'.realpath($file_path);
         }

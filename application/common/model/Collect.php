@@ -3,6 +3,7 @@ namespace app\common\model;
 use app\common\util\Pinyin;
 use think\Cache;
 use think\Db;
+use think\Loader;
 
 class Collect extends Base {
 
@@ -41,7 +42,7 @@ class Collect extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Collect');
+        $validate = Loader::validate('Collect');
         if(!empty($data['collect_id'])){
             if(!$validate->scene('edit')->check($data)){
                 return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
@@ -756,7 +757,7 @@ class Collect extends Base {
                                     $arr2 = explode("$$$", $old_play_from);
                                     $play_key = array_search($cj_play_from, $arr2);
                                     if ($arr1[$play_key] == $cj_play_url) {
-                                        $des .= lang('model/collect/playgroup_same',[$cj_play_from]);;
+                                        $des .= lang('model/collect/playgroup_same',[$cj_play_from]);
                                     } else {
                                         $color = 'green';
                                         $des .= lang('model/collect/playgroup_update_ok',[$cj_play_from]);

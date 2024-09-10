@@ -1,6 +1,8 @@
 <?php
 namespace Upyun;
 
+use Exception;
+
 /**
  * Class Config
  *
@@ -114,7 +116,7 @@ class Config
     public function getFormApiKey()
     {
         if (! $this->formApiKey) {
-            throw new \Exception('form api key is empty.');
+            throw new Exception('form api key is empty.');
         }
 
         return $this->formApiKey;

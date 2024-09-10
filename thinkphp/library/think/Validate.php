@@ -11,6 +11,8 @@
 
 namespace think;
 
+use BadMethodCallException;
+use Closure;
 use think\exception\ClassNotFoundException;
 
 class Validate
@@ -300,7 +302,7 @@ class Validate
 
             // 场景检测
             if (!empty($scene)) {
-                if ($scene instanceof \Closure && !call_user_func_array($scene, [$key, $data])) {
+                if ($scene instanceof Closure && !call_user_func_array($scene, [$key, $data])) {
                     continue;
                 } elseif (is_array($scene)) {
                     if (!in_array($key, $array)) {
@@ -316,7 +318,7 @@ class Validate
             $value = $this->getDataValue($data, $key);
 
             // 字段验证
-            if ($rule instanceof \Closure) {
+            if ($rule instanceof Closure) {
                 // 匿名函数验证 支持传入当前字段和所有字段两个数据
                 $result = call_user_func_array($rule, [$value, $data]);
             } else {
@@ -350,14 +352,14 @@ class Validate
      */
     protected function checkRule($value, $rules)
     {
-        if ($rules instanceof \Closure) {
+        if ($rules instanceof Closure) {
             return call_user_func_array($rules, [$value]);
         } elseif (is_string($rules)) {
             $rules = explode('|', $rules);
         }
 
         foreach ($rules as $key => $rule) {
-            if ($rule instanceof \Closure) {
+            if ($rule instanceof Closure) {
                 $result = call_user_func_array($rule, [$value]);
             } else {
                 // 判断验证类型
@@ -395,7 +397,7 @@ class Validate
         }
         $i = 0;
         foreach ($rules as $key => $rule) {
-            if ($rule instanceof \Closure) {
+            if ($rule instanceof Closure) {
                 $result = call_user_func_array($rule, [$value, $data]);
                 $info   = is_numeric($key) ? '' : $key;
             } else {
@@ -1365,7 +1367,7 @@ class Validate
         if (method_exists($class, $method)) {
             return call_user_func_array([$class, $method], $params);
         } else {
-            throw new \BadMethodCallException('method not exists:' . __CLASS__ . '->' . $method);
+            throw new BadMethodCallException('method not exists:' . __CLASS__ . '->' . $method);
         }
     }
 }

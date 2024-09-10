@@ -3,6 +3,7 @@
 namespace think\addons;
 
 use fast\Http;
+use PDOException;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use think\Db;
@@ -176,7 +177,7 @@ class Service
                     {
                         Db::getPdo()->exec($templine);
                     }
-                    catch (\PDOException $e)
+                    catch (PDOException $e)
                     {
                         //$e->getMessage();
                     }

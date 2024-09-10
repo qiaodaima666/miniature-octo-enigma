@@ -28,7 +28,7 @@ var tplconfig = {
 		if(window.location.hash){
 			var targetScroll = $(window.location.hash).offset().top - 80;
 			$("html,body").animate({scrollTop:targetScroll},300);
-		};
+		}
 		$(window).scroll(function(){
 			var $this = $(this);
 			var targetTop = $(this).scrollTop();

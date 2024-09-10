@@ -4,6 +4,7 @@ namespace app\api\controller;
 
 use think\Db;
 use think\Request;
+use think\response\Json;
 
 class Website extends Base
 {
@@ -21,7 +22,7 @@ class Website extends Base
      *  获取列表
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_list(Request $request)
     {
@@ -115,7 +116,7 @@ class Website extends Base
     /**
      * 查询详情
      *
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_detail(Request $request)
     {

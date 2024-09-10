@@ -1,6 +1,7 @@
 <?php
 namespace GuzzleHttp\Psr7;
 
+use BadMethodCallException;
 use Psr\Http\Message\StreamInterface;
 
 /**
@@ -34,11 +35,11 @@ class FnStream implements StreamInterface
 
     /**
      * Lazily determine which methods are not implemented.
-     * @throws \BadMethodCallException
+     * @throws BadMethodCallException
      */
     public function __get($name)
     {
-        throw new \BadMethodCallException(str_replace('_fn_', '', $name)
+        throw new BadMethodCallException(str_replace('_fn_', '', $name)
             . '() is not implemented in the FnStream');
     }
 

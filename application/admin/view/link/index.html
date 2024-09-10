@@ -77,9 +77,9 @@
                 <td><input type="input" name="link_url[]" value="{$vo.link_url}" class="layui-input"></td>
                 <td><input type="input" name="link_logo[]" value="{$vo.link_logo}" class="layui-input"></td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-sm j-ajax" data-href="{:url('index/check_back_link')}?url={$vo['link_url']}" refresh="no" href="javascript:;" title="{:lang('detect')}">{:lang('detect')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-sm j-iframe" data-href="{:url('info?id='.$vo['link_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-sm j-tr-del" data-href="{:url('del?ids='.$vo['link_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-sm j-ajax" data-href="{:url('index/check_back_link')}?url={$vo['link_url']}" refresh="no" href="javascript:" title="{:lang('detect')}">{:lang('detect')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-sm j-iframe" data-href="{:url('info?id='.$vo['link_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-sm j-tr-del" data-href="{:url('del?ids='.$vo['link_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

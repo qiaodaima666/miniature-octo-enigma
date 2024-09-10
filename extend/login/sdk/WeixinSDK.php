@@ -2,6 +2,7 @@
 namespace login\sdk;
 
 use login\ThinkOauth;
+use think\Exception;
 
 class WeixinSDK extends ThinkOauth
 {
@@ -85,7 +86,7 @@ class WeixinSDK extends ThinkOauth
             $data['openid'] = $this->openid();
             return $data;
         } else
-            throw new \think\Exception("获取微信 ACCESS_TOKEN 出错：{$result}");
+            throw new Exception("获取微信 ACCESS_TOKEN 出错：{$result}");
     }
 
     /**

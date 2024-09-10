@@ -29,7 +29,7 @@ class Work extends Command
 
     /**
      * The queue worker instance.
-     * @var \think\queue\Worker
+     * @var Worker
      */
     protected $worker;
 
@@ -177,7 +177,7 @@ class Work extends Command
     /**
      * 获取异常处理实例
      *
-     * @return \think\exception\Handle
+     * @return Handle
      */
     protected function getExceptionHandler()
     {

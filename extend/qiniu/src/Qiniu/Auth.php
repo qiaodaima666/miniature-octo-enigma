@@ -22,12 +22,12 @@ final class Auth
     public function sign($data)
     {
         $hmac = hash_hmac('sha1', $data, $this->secretKey, true);
-        return $this->accessKey . ':' . \Qiniu\base64_urlSafeEncode($hmac);
+        return $this->accessKey . ':' . base64_urlSafeEncode($hmac);
     }
 
     public function signWithData($data)
     {
-        $encodedData = \Qiniu\base64_urlSafeEncode($data);
+        $encodedData = base64_urlSafeEncode($data);
         return $this->sign($encodedData) . ':' . $encodedData;
     }
 

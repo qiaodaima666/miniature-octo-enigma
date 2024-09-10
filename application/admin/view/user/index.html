@@ -96,16 +96,16 @@
                 <td>{$vo.user_login_ip|long2ip}</td>
                 <td>{$vo.user_login_num}</td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('comment/data?uid='.$vo['user_id'])}" href="javascript:;" title="{:lang('admin/user/comment_record')}">{:lang('admin/user/comment_record')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('order/index?uid='.$vo['user_id'])}" href="javascript:;" title="{:lang('admin/user/order_record')}">{:lang('admin/user/order_record')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('ulog/index?uid='.$vo['user_id'])}" href="javascript:;" title="{:lang('admin/user/visit_record')}">{:lang('admin/user/visit_record')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('plog/index?uid='.$vo['user_id'])}" href="javascript:;" title="{:lang('admin/user/point_record')}">{:lang('admin/user/point_record')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('cash/index?uid='.$vo['user_id'])}" href="javascript:;" title="{:lang('admin/user/withdrawals_record')}">{:lang('admin/user/withdrawals_record')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('user/reward?uid='.$vo['user_id'])}" href="javascript:;" title="{:lang('admin/user/three_distribution')}">{:lang('admin/user/three_distribution')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('comment/data?uid='.$vo['user_id'])}" href="javascript:" title="{:lang('admin/user/comment_record')}">{:lang('admin/user/comment_record')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('order/index?uid='.$vo['user_id'])}" href="javascript:" title="{:lang('admin/user/order_record')}">{:lang('admin/user/order_record')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('ulog/index?uid='.$vo['user_id'])}" href="javascript:" title="{:lang('admin/user/visit_record')}">{:lang('admin/user/visit_record')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('plog/index?uid='.$vo['user_id'])}" href="javascript:" title="{:lang('admin/user/point_record')}">{:lang('admin/user/point_record')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('cash/index?uid='.$vo['user_id'])}" href="javascript:" title="{:lang('admin/user/withdrawals_record')}">{:lang('admin/user/withdrawals_record')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md pear-btn-margin j-iframe" data-full="1" data-href="{:url('user/reward?uid='.$vo['user_id'])}" href="javascript:" title="{:lang('admin/user/three_distribution')}">{:lang('admin/user/three_distribution')}</a>
                 </td>
                 <td>
-                    <a data-full="1" class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['user_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['user_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a data-full="1" class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['user_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['user_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

@@ -5,6 +5,7 @@ use Qiniu\Config;
 use Qiniu\Http\Client;
 use Qiniu\Http\Error;
 use Qiniu\Processing\Operation;
+use function Qiniu\setWithoutEmpty;
 
 /**
  * 持久化处理类,该类用于主动触发异步持久化操作.
@@ -55,8 +56,8 @@ final class PersistentFop
             $fops = implode(';', $fops);
         }
         $params = array('bucket' => $bucket, 'key' => $key, 'fops' => $fops);
-        \Qiniu\setWithoutEmpty($params, 'pipeline', $pipeline);
-        \Qiniu\setWithoutEmpty($params, 'notifyURL', $notify_url);
+        setWithoutEmpty($params, 'pipeline', $pipeline);
+        setWithoutEmpty($params, 'notifyURL', $notify_url);
         if ($force) {
             $params['force'] = 1;
         }

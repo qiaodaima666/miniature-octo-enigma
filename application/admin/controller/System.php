@@ -4,6 +4,7 @@ use http\Cookie;
 use think\Db;
 use think\Config;
 use think\Cache;
+use think\Loader;
 use think\View;
 
 class System extends Base
@@ -64,7 +65,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -168,7 +169,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input();
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -255,7 +256,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -282,7 +283,7 @@ class System extends Base
         if (Request()->isPost()){
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -314,7 +315,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -343,7 +344,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -371,7 +372,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -404,7 +405,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -432,7 +433,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -463,7 +464,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -495,7 +496,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -527,7 +528,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -564,7 +565,7 @@ class System extends Base
     {
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -656,7 +657,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }
@@ -705,7 +706,7 @@ class System extends Base
         if (Request()->isPost()) {
             $config = input('','','htmlentities');
 
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($config)){
                 return $this->error($validate->getError());
             }

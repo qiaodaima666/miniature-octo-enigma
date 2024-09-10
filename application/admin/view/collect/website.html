@@ -6,10 +6,10 @@
     <div class="layui-card">
         <div class="layui-card-body">
             <div class="mb10">
-                <div class="layui-input-inline w150 m5"><a href="javascript:;" data-id="" class="select_type red">{:lang('admin/collect/view_all_resource')}</a></div>
+                <div class="layui-input-inline w150 m5"><a href="javascript:" data-id="" class="select_type red">{:lang('admin/collect/view_all_resource')}</a></div>
                 {volist name="type" id="vo"}
                 <div class="layui-input-inline w150 m5">
-                    <a href="javascript:;" data-id="{$vo.type_id}" class="select_type">{$vo.type_name|htmlspecialchars}</a>
+                    <a href="javascript:" data-id="{$vo.type_id}" class="select_type">{$vo.type_name|htmlspecialchars}</a>
                     <a id="{$param['cjflag']}_{$vo.type_id}" data-href="{:url('index/select')}?tab=website&col={$param['cjflag']}_{$vo.type_id}&ids=1&tpl=select_type&refresh=no&url=collect/bind" data-width="270" data-height="300" class="j-select" >
                         {if condition="$vo.isbind eq 1"}
                         <span class="red">[{$vo.local_type_name}]</span>

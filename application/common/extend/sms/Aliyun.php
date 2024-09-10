@@ -1,6 +1,9 @@
 <?php
 namespace app\common\extend\sms;
 
+use Exception;
+use stdClass;
+
 class Aliyun {
 
     public $name = '阿里云短信';
@@ -15,7 +18,7 @@ class Aliyun {
      * @param $params array API具体参数
      * @param $security boolean 使用https
      * @param $method boolean 使用GET或POST方法请求，VPC仅支持POST
-     * @return bool|\stdClass 返回API接口调用结果，当发生错误时返回false
+     * @return bool|stdClass 返回API接口调用结果，当发生错误时返回false
      */
     public function request($accessKeyId, $accessKeySecret, $domain, $params, $security=false, $method='POST') {
         $apiParams = array_merge(array (
@@ -44,7 +47,7 @@ class Aliyun {
         try {
             $content = $this->fetchContent($url, $method, "Signature={$signature}{$sortedQueryStringTmp}");
             return json_decode($content,true);
-        } catch( \Exception $e) {
+        } catch( Exception $e) {
             return false;
         }
     }
@@ -138,7 +141,7 @@ class Aliyun {
             }
             return ['code'=>101,'msg'=>$rsp['Message']];
         }
-        catch(\Exception $e) {
+        catch(Exception $e) {
             return ['code'=>102,'msg'=>'发生异常请重试'];
         }
     }

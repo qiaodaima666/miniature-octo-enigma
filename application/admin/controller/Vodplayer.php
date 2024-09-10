@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use think\Loader;
 
 class VodPlayer extends Base
 {
@@ -24,7 +25,7 @@ class VodPlayer extends Base
         $param = input();
         $list = config($this->_pre);
         if (Request()->isPost()) {
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }
@@ -130,7 +131,7 @@ class VodPlayer extends Base
     {
         if (request()->isPost()) {
             $param = input();
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

@@ -2,6 +2,8 @@
 
 namespace Qiniu\Http;
 
+use InvalidArgumentException;
+
 /**
  * HTTP response Object
  */
@@ -111,7 +113,7 @@ final class Response
                     }
                 }
                 $this->jsonData = $jsonData;
-            } catch (\InvalidArgumentException $e) {
+            } catch (InvalidArgumentException $e) {
                 $this->error = $body;
                 if ($code >= 200 && $code < 300) {
                     $this->error = $e->getMessage();

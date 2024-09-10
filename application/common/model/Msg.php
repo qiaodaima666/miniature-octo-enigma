@@ -3,6 +3,7 @@ namespace app\common\model;
 use think\Db;
 use think\Cache;
 use app\common\util\Pinyin;
+use think\Loader;
 
 class Msg extends Base {
     // 设置数据表（不含前缀）
@@ -62,7 +63,7 @@ class Msg extends Base {
 
     public function saveData($data)
     {
-        $validate = \think\Loader::validate('Msg');
+        $validate = Loader::validate('Msg');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

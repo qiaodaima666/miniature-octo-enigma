@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use think\Loader;
 
 class Timming extends Base
 {
@@ -23,7 +24,7 @@ class Timming extends Base
         $param = input();
         $list = config('timming');
         if (Request()->isPost()) {
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

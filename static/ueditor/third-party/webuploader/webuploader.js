@@ -5514,7 +5514,7 @@
                     }
                     //Encode ACs
                     var end0pos = 63; // was const... which is crazy
-                    for (; (end0pos>0)&&(DU[end0pos]==0); end0pos--) {};
+                    for (; (end0pos>0)&&(DU[end0pos]==0); end0pos--) {}
                     //end0pos = first element in reverse order !=0
                     if ( end0pos == 0) {
                         writeBits(EOB);
@@ -5701,7 +5701,7 @@
     
             init();
     
-        };
+        }
     
         JPEGEncoder.encode = function( data, quality ) {
             var encoder = new JPEGEncoder( quality );

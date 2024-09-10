@@ -46,7 +46,7 @@
                     <a data-href="{:url('del')}" class="pear-btn pear-btn-danger pear-btn-md j-page-btns confirm"><i class="layui-icon">&#xe640;</i>{:lang('del')}</a>
                     <a data-href="{:url('index/select')}?tab=topic&col=topic_level&tpl=select_level&url=topic/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('level')}</a>
                     <a data-href="{:url('index/select')}?tab=topic&col=topic_status&tpl=select_status&url=topic/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('status')}</a>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('images/opt?tab=topic')}" href="javascript:;" title="{:lang('pic_sync')}"><i class="layui-icon">&#xe620;</i>{:lang('pic_sync')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('images/opt?tab=topic')}" href="javascript:" title="{:lang('pic_sync')}"><i class="layui-icon">&#xe620;</i>{:lang('pic_sync')}</a>
               </div>
             </div>
             <div class="layui-table-box">
@@ -84,8 +84,8 @@
                             <td>{if condition="$vo.ismake eq 1"}<a target="_blank" class="layui-badge   " href="{:mac_url_topic_detail($vo)}">Y</a>{else/}<a class="layui-badge" href="{:url('make/make?ac=topic_info')}?topic={$vo.topic_id}&ref=1">N</a>{/if}</td>
                             <td>{$vo.topic_time|mac_day='color'}</td>
                             <td>
-                                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info?id='.$vo['topic_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                                <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['topic_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info?id='.$vo['topic_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                                <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['topic_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                             </td>
                         </tr>
                         {/volist}

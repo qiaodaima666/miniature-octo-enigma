@@ -9,23 +9,30 @@
 // | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-\think\Route::get('captcha/[:id]', "\\think\\captcha\\CaptchaController@index");
+use think\captcha\Captcha;
+use think\Config;
+use think\Response;
+use think\Route;
+use think\Url;
+use think\Validate;
 
-\think\Validate::extend('captcha', function ($value, $id = "") {
-    return captcha_check($value, $id, (array)\think\Config::get('captcha'));
+Route::get('captcha/[:id]', "\\think\\captcha\\CaptchaController@index");
+
+Validate::extend('captcha', function ($value, $id = "") {
+    return captcha_check($value, $id, (array)Config::get('captcha'));
 });
 
-\think\Validate::setTypeMsg('captcha', '验证码错误!');
+Validate::setTypeMsg('captcha', '验证码错误!');
 
 
 /**
  * @param string $id
  * @param array  $config
- * @return \think\Response
+ * @return Response
  */
 function captcha($id = "", $config = [])
 {
-    $captcha = new \think\captcha\Captcha($config);
+    $captcha = new Captcha($config);
     return $captcha->entry($id);
 }
 
@@ -36,7 +43,7 @@ function captcha($id = "", $config = [])
  */
 function captcha_src($id = "")
 {
-    return \think\Url::build('/captcha' . ($id ? "/{$id}" : ''));
+    return Url::build('/captcha' . ($id ? "/{$id}" : ''));
 }
 
 
@@ -58,7 +65,7 @@ function captcha_img($id = "")
  */
 function captcha_check($value, $id = "", $config = [])
 {
-    $captcha = new \think\captcha\Captcha($config);
+    $captcha = new Captcha($config);
     return $captcha->check($value, $id);
 }
 

@@ -146,7 +146,7 @@ var tplconfig = {
         if (window.location.hash) {
             var targetScroll = $(window.location.hash).offset().top - 80;
             $("html,body").animate({ scrollTop: targetScroll }, 300);
-        };
+        }
         
         $(window).scroll(function() {
             var $this = $(this);
@@ -250,7 +250,7 @@ var tplconfig = {
             var URL2 = encodeURI(tplconfig.browser.url);
         } else {
             var URL2 = shareurl + encodeURI(tplconfig.browser.urlpath);
-        };
+        }
         if (openapi == 'sina') {
             var apiurl = $("#apiurl").val();
             if (apiurl == '' || apiurl == '#') {
@@ -290,7 +290,7 @@ var tplconfig = {
                     if (obj.Code === 0) { short.append(obj.ShortUrl); } else { short.append(URL2); }
                 }
             }
-        };
+        }
     },
     images: {
         lazyload: function() {

@@ -4,6 +4,8 @@
 
 namespace Composer\Autoload;
 
+use Closure;
+
 class ComposerStaticInit089ad3125dc0150f208d63f46a74e4c6
 {
     public static $files = array (
@@ -58,7 +60,7 @@ class ComposerStaticInit089ad3125dc0150f208d63f46a74e4c6
 
     public static function getInitializer(ClassLoader $loader)
     {
-        return \Closure::bind(function () use ($loader) {
+        return Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit089ad3125dc0150f208d63f46a74e4c6::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit089ad3125dc0150f208d63f46a74e4c6::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit089ad3125dc0150f208d63f46a74e4c6::$classMap;

@@ -84,8 +84,8 @@
 							<td>{$vo.banner_stime|date='Y-m-d',###} - {$vo.banner_etime|date='Y-m-d',###}</td>
 							<td>{if condition="$vo.banner_status eq 1"}<span class="layui-badge">{:lang('admin/banner/index/show')}</span>{else/}<span class="layui-badge">{:lang('admin/banner/index/close')}</span>{/if}</td>
 							<td>
-								<a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="2" data-href="{:url('info?id='.$vo['banner_id'])}" href="javascript:;" title="{:lang('admin/banner/index/update')}">{:lang('admin/banner/index/update')}</a>
-								<a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['banner_id'])}" href="javascript:;" title="{:lang('admin/banner/index/del')}">{:lang('admin/banner/index/del')}</a>
+								<a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="2" data-href="{:url('info?id='.$vo['banner_id'])}" href="javascript:" title="{:lang('admin/banner/index/update')}">{:lang('admin/banner/index/update')}</a>
+								<a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['banner_id'])}" href="javascript:" title="{:lang('admin/banner/index/del')}">{:lang('admin/banner/index/del')}</a>
 							</td>
 						</tr>
 						{/volist}

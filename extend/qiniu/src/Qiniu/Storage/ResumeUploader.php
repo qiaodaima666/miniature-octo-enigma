@@ -1,9 +1,13 @@
 <?php
 namespace Qiniu\Storage;
 
+use Exception;
 use Qiniu\Config;
 use Qiniu\Http\Client;
 use Qiniu\Http\Error;
+use function Qiniu\base64_urlSafeEncode;
+use function Qiniu\crc32_data;
+use function Qiniu\explodeUpToken;
 
 /**
  * 断点续上传类, 该类主要实现了断点续上传中的分块上传,
@@ -56,14 +60,14 @@ final class ResumeUploader
         $this->contexts = array();
         $this->config = $config;
 
-        list($accessKey, $bucket, $err) = \Qiniu\explodeUpToken($upToken);
+        list($accessKey, $bucket, $err) = explodeUpToken($upToken);
         if ($err != null) {
             return array(null, $err);
         }
 
         $upHost = $config->getUpHost($accessKey, $bucket);
         if ($err != null) {
-            throw new \Exception($err->message(), 1);
+            throw new Exception($err->message(), 1);
         }
         $this->host = $upHost;
     }
@@ -78,16 +82,16 @@ final class ResumeUploader
             $blockSize = $this->blockSize($uploaded);
             $data = fread($this->inputStream, $blockSize);
             if ($data === false) {
-                throw new \Exception("file read failed", 1);
+                throw new Exception("file read failed", 1);
             }
-            $crc = \Qiniu\crc32_data($data);
+            $crc = crc32_data($data);
             $response = $this->makeBlock($data, $blockSize);
             $ret = null;
             if ($response->ok() && $response->json() != null) {
                 $ret = $response->json();
             }
             if ($response->statusCode < 0) {
-                list($accessKey, $bucket, $err) = \Qiniu\explodeUpToken($this->upToken);
+                list($accessKey, $bucket, $err) = explodeUpToken($this->upToken);
                 if ($err != null) {
                     return array(null, $err);
                 }
@@ -121,14 +125,14 @@ final class ResumeUploader
     private function fileUrl($fname)
     {
         $url = $this->host . '/mkfile/' . $this->size;
-        $url .= '/mimeType/' . \Qiniu\base64_urlSafeEncode($this->mime);
+        $url .= '/mimeType/' . base64_urlSafeEncode($this->mime);
         if ($this->key != null) {
-            $url .= '/key/' . \Qiniu\base64_urlSafeEncode($this->key);
+            $url .= '/key/' . base64_urlSafeEncode($this->key);
         }
-        $url .= '/fname/' . \Qiniu\base64_urlSafeEncode($fname);
+        $url .= '/fname/' . base64_urlSafeEncode($fname);
         if (!empty($this->params)) {
             foreach ($this->params as $key => $value) {
-                $val = \Qiniu\base64_urlSafeEncode($value);
+                $val = base64_urlSafeEncode($value);
                 $url .= "/$key/$val";
             }
         }

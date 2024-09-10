@@ -438,7 +438,7 @@ function mac_alert_url($str,$url)
 
 function mac_jump($url,$sec=0)
 {
-    echo '<script>setTimeout(function (){location.href="'.$url.'";},'.($sec*1000).');</script><div style="padding-left:10px"><span>'.lang('pause').''.$sec.''.lang('continue_in_second').'  >>>  </span><a href="'.$url.'" >'.lang('browser_jump').'</a></div><br>';
+    echo '<script>setTimeout(function (){location.href="'.$url.'";},'.($sec*1000). ')</script><div style="padding-left:10px"><span>' .lang('pause').''.$sec.''.lang('continue_in_second').'  >>>  </span><a href="'.$url.'" >'.lang('browser_jump').'</a></div><br>';
 }
 
 function mac_echo($str)

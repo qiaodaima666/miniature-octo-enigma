@@ -448,7 +448,7 @@
     </div>
     <?php if(\think\App::$debug) { ?>
     <script>
-        var LINE = <?php echo $line; ?>;
+        var LINE = <?php echo $line; ?>
 
         function $(selector, node){
             var elements;

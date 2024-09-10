@@ -1,5 +1,6 @@
 <?php
 namespace app\install\controller;
+use Exception;
 use think\Controller;
 use think\Db;
 use think\Lang;
@@ -134,7 +135,7 @@ class Index extends Controller
             // 检测数据库连接
             try{
                 $db_connect->execute('select version()');
-            }catch(\Exception $e){
+            }catch(Exception $e){
                 $this->error(lang('install/database_connect_err'));
             }
 
@@ -216,7 +217,7 @@ class Index extends Controller
                 foreach ($sql_list as $v) {
                     try {
                         Db::execute($v);
-                    } catch(\Exception $e) {
+                    } catch(Exception $e) {
                         return $this->error(lang('install/sql_err'). $e);
                     }
                 }
@@ -233,7 +234,7 @@ class Index extends Controller
                     foreach ($sql_list as $v) {
                         try {
                             Db::execute($v);
-                        } catch(\Exception $e) {
+                        } catch(Exception $e) {
                             return $this->error(lang('install/init_data_err'). $e);
                         }
                     }

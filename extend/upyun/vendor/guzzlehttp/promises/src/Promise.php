@@ -1,6 +1,10 @@
 <?php
 namespace GuzzleHttp\Promise;
 
+use Exception;
+use LogicException;
+use Throwable;
+
 /**
  * Promises/A+ implementation that avoids recursion when possible.
  *
@@ -95,9 +99,9 @@ class Promise implements PromiseInterface
             $this->cancelFn = null;
             try {
                 $fn();
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $this->reject($e);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->reject($e);
             }
         }
@@ -126,12 +130,12 @@ class Promise implements PromiseInterface
                 return;
             }
             throw $this->state === $state
-                ? new \LogicException("The promise is already {$state}.")
-                : new \LogicException("Cannot change a {$this->state} promise to {$state}");
+                ? new LogicException("The promise is already {$state}.")
+                : new LogicException("Cannot change a {$this->state} promise to {$state}");
         }
 
         if ($value === $this) {
-            throw new \LogicException('Cannot fulfill or reject a promise with itself');
+            throw new LogicException('Cannot fulfill or reject a promise with itself');
         }
 
         // Clear out the state of the promise but stash the handlers.
@@ -208,9 +212,9 @@ class Promise implements PromiseInterface
                 // Forward rejections down the chain.
                 $promise->reject($value);
             }
-        } catch (\Throwable $reason) {
+        } catch (Throwable $reason) {
             $promise->reject($reason);
-        } catch (\Exception $reason) {
+        } catch (Exception $reason) {
             $promise->reject($reason);
         }
     }
@@ -244,7 +248,7 @@ class Promise implements PromiseInterface
             $wfn = $this->waitFn;
             $this->waitFn = null;
             $wfn(true);
-        } catch (\Exception $reason) {
+        } catch (Exception $reason) {
             if ($this->state === self::PENDING) {
                 // The promise has not been resolved yet, so reject the promise
                 // with the exception.

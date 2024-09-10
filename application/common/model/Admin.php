@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Admin extends Base {
     // 设置数据表（不含前缀）
@@ -52,7 +53,7 @@ class Admin extends Base {
         else{
             $data['admin_auth'] = '';
         }
-        $validate = \think\Loader::validate('Admin');
+        $validate = Loader::validate('Admin');
         if(!empty($data['admin_id'])){
             if(!$validate->scene('edit')->check($data)){
                 return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];

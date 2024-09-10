@@ -80,7 +80,7 @@
                                 <input type="text" name="data[par_num]" value="{$data.par_num}" class="layui-input">
                             </div>
                             <div class="layui-input-inline" style="width:10%;">
-                                <a class="pear-btn pear-btn-primary pear-btn-md" onclick="testUrl();" href="javascript:;">{:lang('test')}</a>
+                                <a class="pear-btn pear-btn-primary pear-btn-md" onclick="testUrl();" href="javascript:">{:lang('test')}</a>
                             </div>
                         </div>
                     </div>
@@ -233,7 +233,7 @@
 
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <a class="pear-btn pear-btn-primary pear-btn-md" href="javascript:;" onclick="add_caiji()">{:lang('admin/cj/add_group')}</a>
+                            <a class="pear-btn pear-btn-primary pear-btn-md" href="javascript:" onclick="add_caiji()">{:lang('admin/cj/add_group')}</a>
                         </div>
                     </div>
 
@@ -253,7 +253,7 @@
                         <div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div>
                         <div class="layui-input-inline">
                             <textarea name="data[customize_config][html_rule][]" id="content_html_rule_'+caiji+'" class="layui-textarea">{$vo.html_rule}</textarea>
-                            <div class="layui-form-mid layui-word-aux"><a class="pear-btn pear-btn-primary pear-btn-md" href="javascript:;" onclick="add_tag('content_html_rule_'+caiji+'')">{:lang('select')}</a></div>
+                            <div class="layui-form-mid layui-word-aux"><a class="pear-btn pear-btn-primary pear-btn-md" href="javascript:" onclick="add_tag('content_html_rule_'+caiji+'')">{:lang('select')}</a></div>
                         </div>
                     </div>
                     <hr>
@@ -430,7 +430,7 @@
     var caiji=0;
     function add_caiji()
     {
-        $('#customize_config').append('<div class="layui-form-item mt10"><label class="layui-form-label">{:lang('rule_name')}：</label><div class="layui-input-inline"><input type="text" name="data[customize_config][name][]" placeholder="" value="" class="layui-input"></div><div class="layui-form-mid">{:lang('rule_name_en')}：</div><div class="layui-input-inline"><input type="text" name="data[customize_config][en_name][]" placeholder="" value="" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label><div class="layui-input-inline"><textarea name="data[customize_config][rule][]" id="role_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux">{:lang('use')}"<a href="javascript:insertText(\'title_rule\', \'[内容]\')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}    </div></div><div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div><div class="layui-input-inline"><textarea name="data[customize_config][html_rule][]" id="content_html_rule_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux"><a class="pear-btn pear-btn-primary pear-btn-md" href="javascript:;" onclick="add_tag(\'content_html_rule_'+caiji+'\')">{:lang('select')}</a></div></div></div><hr>');
+        $('#customize_config').append('<div class="layui-form-item mt10"><label class="layui-form-label">{:lang('rule_name')}：</label><div class="layui-input-inline"><input type="text" name="data[customize_config][name][]" placeholder="" value="" class="layui-input"></div><div class="layui-form-mid">{:lang('rule_name_en')}：</div><div class="layui-input-inline"><input type="text" name="data[customize_config][en_name][]" placeholder="" value="" class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">{:lang('admin/cj/match_rule')}：</label><div class="layui-input-inline"><textarea name="data[customize_config][rule][]" id="role_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux">{:lang('use')}"<a href="javascript:insertText(\'title_rule\', \'[内容]\')"> [内容] </a>"{:lang('admin/cj/wildcard_tip')}    </div></div><div class="layui-form-mid">{:lang('admin/cj/filter_rule')}：</div><div class="layui-input-inline"><textarea name="data[customize_config][html_rule][]" id="content_html_rule_'+caiji+'" class="layui-textarea"></textarea><div class="layui-form-mid layui-word-aux"><a class="pear-btn pear-btn-primary pear-btn-md" href="javascript:;" onclick="add_tag(\'content_html_rule_'+caiji+'\')">{:lang('select')}</a></div></div></div><hr>')
         caiji++;
     }
 

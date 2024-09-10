@@ -53,13 +53,13 @@
             <div class="plot_head clearfix">
                     <div class="showbtn" style="display:none;">
 						<span class="playlist_notfull text_center" style="display:block;">
-							<a href="javascript:;" onclick="showlist(this);" class="">
+							<a href="javascript:" onclick="showlist(this);" class="">
 								<i class="iconfont">&#xe63a;</i>&nbsp;<span data-lang="string_zkjq">{:lang_web('string_zkjq')}</span>
 							</a>
 						</span>
 
 						<span class="playlist_full text_center" style="display:none;">
-							<a href="javascript:;" onclick="hidelist(this);" class="">
+							<a href="javascript:" onclick="hidelist(this);" class="">
 								<i class="iconfont">&#xe628;</i>&nbsp;<span data-lang="string_sqjq">{:lang_web('string_sqjq')}</span>
 							</a>
 						</span>
@@ -72,7 +72,7 @@
 								<li {if condition="$key eq $param['page']"}class="active tplconfig-02"{/if}><a href="{:mac_url_plot_detail($obj,['page'=>$key])}">{$vo2.name}</a></li>
 								{/volist}
 							</ul>
-                            <a href="javascript:;" onclick="showlist(this);" class="listshow hidden_xs">
+                            <a href="javascript:" onclick="showlist(this);" class="listshow hidden_xs">
 								<span>
 									<i class="iconfont">&#xe63a;</i>&nbsp;
 									<span data-lang="string_vod_expand">{:lang_web('string_vod_expand')}</span>

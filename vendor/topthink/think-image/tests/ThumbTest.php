@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use SplFileInfo;
 use think\Image;
 
 class ThumbTest extends TestCase
@@ -26,7 +27,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -40,7 +41,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(150, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -54,7 +55,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -68,7 +69,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -82,7 +83,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -96,7 +97,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -116,7 +117,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -130,7 +131,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(150, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -144,7 +145,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -158,7 +159,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -172,7 +173,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -186,7 +187,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -205,7 +206,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -219,7 +220,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(113, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -233,7 +234,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -247,7 +248,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -261,7 +262,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -275,7 +276,7 @@ class ThumbTest extends TestCase
         $this->assertEquals(200, $image->width());
         $this->assertEquals(200, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 

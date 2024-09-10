@@ -1,12 +1,15 @@
 <?php
 namespace GuzzleHttp\Psr7;
 
+use InvalidArgumentException;
+use Iterator;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
+use RuntimeException;
 
 /**
  * Returns the string representation of an HTTP message.
@@ -29,7 +32,7 @@ function str(MessageInterface $message)
             . $message->getStatusCode() . ' '
             . $message->getReasonPhrase();
     } else {
-        throw new \InvalidArgumentException('Unknown message type');
+        throw new InvalidArgumentException('Unknown message type');
     }
 
     foreach ($message->getHeaders() as $name => $values) {
@@ -49,7 +52,7 @@ function str(MessageInterface $message)
  * @param string|UriInterface $uri
  *
  * @return UriInterface
- * @throws \InvalidArgumentException
+ * @throws InvalidArgumentException
  */
 function uri_for($uri)
 {
@@ -59,7 +62,7 @@ function uri_for($uri)
         return new Uri($uri);
     }
 
-    throw new \InvalidArgumentException('URI must be a string or UriInterface');
+    throw new InvalidArgumentException('URI must be a string or UriInterface');
 }
 
 /**
@@ -73,7 +76,7 @@ function uri_for($uri)
  * @param array                                                        $options  Additional options
  *
  * @return Stream
- * @throws \InvalidArgumentException if the $resource arg is not valid.
+ * @throws InvalidArgumentException if the $resource arg is not valid.
  */
 function stream_for($resource = '', array $options = [])
 {
@@ -92,7 +95,7 @@ function stream_for($resource = '', array $options = [])
         case 'object':
             if ($resource instanceof StreamInterface) {
                 return $resource;
-            } elseif ($resource instanceof \Iterator) {
+            } elseif ($resource instanceof Iterator) {
                 return new PumpStream(function () use ($resource) {
                     if (!$resource->valid()) {
                         return false;
@@ -113,7 +116,7 @@ function stream_for($resource = '', array $options = [])
         return new PumpStream($resource, $options);
     }
 
-    throw new \InvalidArgumentException('Invalid resource type: ' . gettype($resource));
+    throw new InvalidArgumentException('Invalid resource type: ' . gettype($resource));
 }
 
 /**
@@ -269,7 +272,7 @@ function modify_request(RequestInterface $request, array $changes)
  *
  * @param MessageInterface $message Message to rewind
  *
- * @throws \RuntimeException
+ * @throws RuntimeException
  */
 function rewind_body(MessageInterface $message)
 {
@@ -290,13 +293,13 @@ function rewind_body(MessageInterface $message)
  * @param string $mode     Mode used to open the file
  *
  * @return resource
- * @throws \RuntimeException if the file cannot be opened
+ * @throws RuntimeException if the file cannot be opened
  */
 function try_fopen($filename, $mode)
 {
     $ex = null;
     set_error_handler(function () use ($filename, $mode, &$ex) {
-        $ex = new \RuntimeException(sprintf(
+        $ex = new RuntimeException(sprintf(
             'Unable to open %s using mode %s: %s',
             $filename,
             $mode,
@@ -308,7 +311,7 @@ function try_fopen($filename, $mode)
     restore_error_handler();
 
     if ($ex) {
-        /** @var $ex \RuntimeException */
+        /** @var $ex RuntimeException */
         throw $ex;
     }
 
@@ -323,7 +326,7 @@ function try_fopen($filename, $mode)
  * @param int             $maxLen Maximum number of bytes to read. Pass -1
  *                                to read the entire stream.
  * @return string
- * @throws \RuntimeException on error.
+ * @throws RuntimeException on error.
  */
 function copy_to_string(StreamInterface $stream, $maxLen = -1)
 {
@@ -364,7 +367,7 @@ function copy_to_string(StreamInterface $stream, $maxLen = -1)
  * @param int             $maxLen Maximum number of bytes to read. Pass -1
  *                                to read the entire stream.
  *
- * @throws \RuntimeException on error.
+ * @throws RuntimeException on error.
  */
 function copy_to_stream(
     StreamInterface $source,
@@ -401,7 +404,7 @@ function copy_to_stream(
  * @param bool            $rawOutput Whether or not to use raw output
  *
  * @return string Returns the hash of the stream
- * @throws \RuntimeException on error.
+ * @throws RuntimeException on error.
  */
 function hash(
     StreamInterface $stream,
@@ -465,7 +468,7 @@ function parse_request($message)
     $data = _parse_message($message);
     $matches = [];
     if (!preg_match('/^[\S]+\s+([a-zA-Z]+:\/\/|\/).*/', $data['start-line'], $matches)) {
-        throw new \InvalidArgumentException('Invalid request string');
+        throw new InvalidArgumentException('Invalid request string');
     }
     $parts = explode(' ', $data['start-line'], 3);
     $version = isset($parts[2]) ? explode('/', $parts[2])[1] : '1.1';
@@ -495,7 +498,7 @@ function parse_response($message)
     // between status-code and reason-phrase is required. But browsers accept
     // responses without space and reason as well.
     if (!preg_match('/^HTTP\/.* [0-9]{3}( .*|$)/', $data['start-line'])) {
-        throw new \InvalidArgumentException('Invalid response string');
+        throw new InvalidArgumentException('Invalid response string');
     }
     $parts = explode(' ', $data['start-line'], 3);
 
@@ -584,7 +587,7 @@ function build_query(array $params, $encoding = PHP_QUERY_RFC3986)
     } elseif ($encoding === PHP_QUERY_RFC1738) {
         $encoder = 'urlencode';
     } else {
-        throw new \InvalidArgumentException('Invalid type');
+        throw new InvalidArgumentException('Invalid type');
     }
 
     $qs = '';
@@ -755,7 +758,7 @@ function mimetype_from_extension($extension)
 function _parse_message($message)
 {
     if (!$message) {
-        throw new \InvalidArgumentException('Invalid message');
+        throw new InvalidArgumentException('Invalid message');
     }
 
     // Iterate over each line in the message, accounting for line endings

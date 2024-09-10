@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use think\Loader;
 
 class VodDowner extends Base
 {
@@ -24,7 +25,7 @@ class VodDowner extends Base
         $param = input();
         $list = config($this->_pre);
         if (Request()->isPost()) {
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

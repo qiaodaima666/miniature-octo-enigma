@@ -27,7 +27,7 @@
                     </blockquote>
 
                     <script>
-                        var arr_len = {$domain_list|count};
+                        var arr_len = {$domain_list|count}
                     </script>
                     {php}
                     $n=0;
@@ -48,7 +48,7 @@
                             <div class="layui-input-inline w150"><input type="text" name="domain[html_dir][]" class="layui-input" placeholder="{:lang('tpl_dir')}" value="{$vo.html_dir}"></div>
                             <div class="layui-input-inline w150"><input type="text" name="domain[ads_dir][]" class="layui-input" placeholder="{:lang('ads_dir')}" value="{$vo.ads_dir}"></div>
                             <div class="layui-input-inline w150"> 
-                                <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['site_url'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                                <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['site_url'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                             </div>
                         </div>
                         {/volist}

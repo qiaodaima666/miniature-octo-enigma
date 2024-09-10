@@ -95,7 +95,7 @@
                 <a data-href="{:url('index/select')}?tab=actor&col=actor_level&tpl=select_level&url=actor/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('level')}</a>
                 <a data-href="{:url('index/select')}?tab=actor&col=actor_hits&tpl=select_hits&url=actor/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('hits')}</a>
                 <a data-href="{:url('index/select')}?tab=actor&col=actor_status&tpl=select_status&url=actor/field" data-width="470" data-height="200" data-checkbox="1" class="pear-btn pear-btn-primary pear-btn-md j-select"><i class="layui-icon">&#xe620;</i>{:lang('status')}</a>
-                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('images/opt?tab=actor')}" href="javascript:;" title="{:lang('pic_sync')}"><i class="layui-icon">&#xe620;</i>{:lang('pic_sync')}</a>
+                <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('images/opt?tab=actor')}" href="javascript:" title="{:lang('pic_sync')}"><i class="layui-icon">&#xe620;</i>{:lang('pic_sync')}</a>
             
               </div>
             </div>
@@ -136,8 +136,8 @@
                 <td><a data-href="{:url('index/select')}?tab=actor&col=actor_level&tpl=select_level&url=actor/field&ids={$vo.actor_id}" data-width="470" data-height="200" class=" j-select"><span class="layui-badge ">{$vo.actor_level}</span></a></td>
                 <td>{$vo.actor_time|mac_day='color'}</td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info?id='.$vo['actor_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['actor_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-full="1" data-href="{:url('info?id='.$vo['actor_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['actor_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

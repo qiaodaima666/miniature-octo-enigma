@@ -2,6 +2,7 @@
 namespace app\common\model;
 use think\Cache;
 use think\Db;
+use think\Loader;
 
 class Group extends Base {
     // 设置数据表（不含前缀）
@@ -66,7 +67,7 @@ class Group extends Base {
             $data['group_popedom'] ='';
         }
 
-        $validate = \think\Loader::validate('Group');
+        $validate = Loader::validate('Group');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

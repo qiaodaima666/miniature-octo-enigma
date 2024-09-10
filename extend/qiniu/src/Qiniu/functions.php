@@ -2,7 +2,9 @@
 
 namespace Qiniu;
 
+use InvalidArgumentException;
 use Qiniu\Config;
+use Qiniu\Processing\ImageUrlBuilder;
 
 if (!defined('QINIU_FUNCTIONS_VERSION')) {
     define('QINIU_FUNCTIONS_VERSION', Config::SDK_VER);
@@ -74,7 +76,7 @@ if (!defined('QINIU_FUNCTIONS_VERSION')) {
      * @param int $depth User specified recursion depth.
      *
      * @return mixed
-     * @throws \InvalidArgumentException if the JSON cannot be parsed.
+     * @throws InvalidArgumentException if the JSON cannot be parsed.
      * @link http://www.php.net/manual/en/function.json-decode.php
      */
     function json_decode($json, $assoc = false, $depth = 512)
@@ -94,7 +96,7 @@ if (!defined('QINIU_FUNCTIONS_VERSION')) {
 
         if (JSON_ERROR_NONE !== json_last_error()) {
             $last = json_last_error();
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'Unable to parse JSON data: '
                 . (isset($jsonErrors[$last])
                     ? $jsonErrors[$last]
@@ -168,7 +170,7 @@ if (!defined('QINIU_FUNCTIONS_VERSION')) {
 
         static $imageUrlBuilder = null;
         if (is_null($imageUrlBuilder)) {
-            $imageUrlBuilder = new \Qiniu\Processing\ImageUrlBuilder;
+            $imageUrlBuilder = new ImageUrlBuilder;
         }
 
         return call_user_func_array(array($imageUrlBuilder, 'thumbnail'), func_get_args());
@@ -200,7 +202,7 @@ if (!defined('QINIU_FUNCTIONS_VERSION')) {
 
         static $imageUrlBuilder = null;
         if (is_null($imageUrlBuilder)) {
-            $imageUrlBuilder = new \Qiniu\Processing\ImageUrlBuilder;
+            $imageUrlBuilder = new ImageUrlBuilder;
         }
 
         return call_user_func_array(array($imageUrlBuilder, 'waterImg'), func_get_args());
@@ -236,7 +238,7 @@ if (!defined('QINIU_FUNCTIONS_VERSION')) {
 
         static $imageUrlBuilder = null;
         if (is_null($imageUrlBuilder)) {
-            $imageUrlBuilder = new \Qiniu\Processing\ImageUrlBuilder;
+            $imageUrlBuilder = new ImageUrlBuilder;
         }
 
         return call_user_func_array(array($imageUrlBuilder, 'waterText'), func_get_args());

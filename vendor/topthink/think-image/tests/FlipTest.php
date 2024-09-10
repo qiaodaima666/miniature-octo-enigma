@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use SplFileInfo;
 use think\Image;
 
 class FlipTest extends TestCase
@@ -20,7 +21,7 @@ class FlipTest extends TestCase
         $image    = Image::open($this->getJpeg());
         $image->flip()->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -34,7 +35,7 @@ class FlipTest extends TestCase
         $image    = Image::open($this->getGif());
         $image->flip(Image::FLIP_Y)->save($pathname);
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 

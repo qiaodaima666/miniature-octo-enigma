@@ -22,10 +22,10 @@
 		<div class="comm_cont">
 			<div class="comm_content">{$vo.comment_content|mac_em_replace}</div>
 			<div class="gw_action">
-				<a class="digg_link" data-id="{$vo.comment_id}" data-mid="4" data-type="up" href="javascript:;"><i class="iconfont">&#xe64e;</i><em class="digg_num icon-num">{$vo.comment_up}</em></a>
-				<a class="digg_link" data-id="{$vo.comment_id}" data-mid="4" data-type="down" href="javascript:;"><i class="iconfont">&#xe64f;</i><em class="digg_num icon-num">{$vo.comment_down}</em></a>
-				<a class="comment_reply" data-id="{$vo.comment_id}" href="javascript:;" data-lang='string_pinglun_huifu'>{:lang_web('string_pinglun_huifu')}</a>
-				<a class="comment_report" data-id="{$vo.comment_id}" href="javascript:;" data-lang="string_pinglun_jubao">{:lang_web('string_pinglun_jubao')}</a>	
+				<a class="digg_link" data-id="{$vo.comment_id}" data-mid="4" data-type="up" href="javascript:"><i class="iconfont">&#xe64e;</i><em class="digg_num icon-num">{$vo.comment_up}</em></a>
+				<a class="digg_link" data-id="{$vo.comment_id}" data-mid="4" data-type="down" href="javascript:"><i class="iconfont">&#xe64f;</i><em class="digg_num icon-num">{$vo.comment_down}</em></a>
+				<a class="comment_reply" data-id="{$vo.comment_id}" href="javascript:" data-lang='string_pinglun_huifu'>{:lang_web('string_pinglun_huifu')}</a>
+				<a class="comment_report" data-id="{$vo.comment_id}" href="javascript:" data-lang="string_pinglun_jubao">{:lang_web('string_pinglun_jubao')}</a>
 			</div>
 			{maccms:foreach name="$vo.sub" id="child"}
 			<div class="comm_reply comm_reply_child back_ashen comm_tops">
@@ -33,9 +33,9 @@
 					<span class="text_line">{$child.comment_name} ／ {$child.comment_time|date='H:i',###}</span>
 					<div class="comm_content">{$child.comment_content|mac_em_replace}</div>
 						<div class="gw_action">
-						<a class="digg_link" data-id="{$child.comment_id}" data-mid="4" data-type="up" href="javascript:;"><i class="iconfont">&#xe64e;</i><em class="digg_num icon-num">{$child.comment_up}</em></a>
-						<a class="digg_link" data-id="{$child.comment_id}" data-mid="4" data-type="down" href="javascript:;"><i class="iconfont">&#xe64f;</i><em class="digg_num icon-num">{$child.comment_down}</em></a>
-						<a class="comment_report_child" data-id="{$child.comment_id}" href="javascript:;" data-lang="string_pinglun_jubao">{:lang_web('string_pinglun_jubao')}</a>	
+						<a class="digg_link" data-id="{$child.comment_id}" data-mid="4" data-type="up" href="javascript:"><i class="iconfont">&#xe64e;</i><em class="digg_num icon-num">{$child.comment_up}</em></a>
+						<a class="digg_link" data-id="{$child.comment_id}" data-mid="4" data-type="down" href="javascript:"><i class="iconfont">&#xe64f;</i><em class="digg_num icon-num">{$child.comment_down}</em></a>
+						<a class="comment_report_child" data-id="{$child.comment_id}" href="javascript:" data-lang="string_pinglun_jubao">{:lang_web('string_pinglun_jubao')}</a>
 					</div>
 				</div>
 			</div>

@@ -3,12 +3,15 @@
 namespace app\admin\controller;
 
 use app\common\util\Dir;
+use CURLFile;
 use think\addons\AddonException;
 use think\addons\Service;
 use think\Cache;
 use think\Config;
 use think\Exception;
 use think\Lang;
+use think\Loader;
+use ZipArchive;
 
 class Addon extends Base
 {
@@ -277,7 +280,7 @@ class Addon extends Base
     public function local()
     {
         $param = input();
-        $validate = \think\Loader::validate('Token');
+        $validate = Loader::validate('Token');
         if (!$validate->check($param)) {
             return $this->error($validate->getError());
         }
@@ -726,8 +729,8 @@ class Addon extends Base
         $data["version"] = $param["version"];
         $data["content"] = $param["content"];
         $data["type"] = $param["type"];
-        $data["images[]"] = new \CURLFile($_FILES["images"]['tmp_name']);
-        $data["videos[]"] = new \CURLFile($_FILES["videos"]['tmp_name']);
+        $data["images[]"] = new CURLFile($_FILES["images"]['tmp_name']);
+        $data["videos[]"] = new CURLFile($_FILES["videos"]['tmp_name']);
 
         $res = self::post($this->data_api_host . $this->api_feedback_url, $data, ["lang:{$this->local}"]);
 
@@ -758,7 +761,7 @@ class Addon extends Base
         }
 
         //解压zip文件
-        $zip = new \ZipArchive();
+        $zip = new ZipArchive();
         $zip->open($file_name);
         if (!$zip) {
             $this->error("请先安装zip扩展");
@@ -827,7 +830,7 @@ class Addon extends Base
          * return $this->error("模板已存在,请在本地模板管理菜单中操作");
          * }**/
         //解压zip文件
-        $zip = new \ZipArchive();
+        $zip = new ZipArchive();
         $zip->open($file_name);
         if (!$zip) {
             return $this->error(lang('admin/addon/downandinstalltheme/install_zip_extension'));

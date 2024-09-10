@@ -60,8 +60,8 @@
                 <td><a target="_blank" class="layui-badge-rim " href="">{$vo.title}</a></td>
                 <td>{$vo.update_time|mac_day='color'}</td>
                 <td>
-                    <a class="layui-badge-rim j-iframe" data-full="1" data-href="{:url('marketinfo?id='.$vo['id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
-                    <a class="layui-badge-rim j-tr-del" data-href="{:url('marketdel?ids='.$vo['id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="layui-badge-rim j-iframe" data-full="1" data-href="{:url('marketinfo?id='.$vo['id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="layui-badge-rim j-tr-del" data-href="{:url('marketdel?ids='.$vo['id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                 </td>
             </tr>
             {/volist}

@@ -5,6 +5,8 @@
 
 namespace Probe\Provider;
 
+use PDO;
+
 /**
  * @author Eugene Terentev <eugene@terentev.net>
  */
@@ -31,22 +33,22 @@ interface ProviderInterface
     public function getArchitecture();
 
     /**
-     * @param \PDO $connection
+     * @param PDO $connection
      * @return mixed
      */
-    public function getDbVersion(\PDO $connection);
+    public function getDbVersion(PDO $connection);
 
     /**
-     * @param \PDO $connection
+     * @param PDO $connection
      * @return mixed
      */
-    public function getDbInfo(\PDO $connection);
+    public function getDbInfo(PDO $connection);
 
     /**
-     * @param \PDO $connection
+     * @param PDO $connection
      * @return mixed
      */
-    public function getDbType(\PDO $connection);
+    public function getDbType(PDO $connection);
 
     /**
      * Total Memory in bytes

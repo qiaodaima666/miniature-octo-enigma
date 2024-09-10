@@ -6,6 +6,9 @@ use Qiniu\Config;
 use Qiniu\Zone;
 use Qiniu\Http\Client;
 use Qiniu\Http\Error;
+use function Qiniu\base64_urlSafeEncode;
+use function Qiniu\entry;
+use function Qiniu\setWithoutEmpty;
 
 /**
  * 主要涉及了空间资源管理及批量操作接口的实现，具体的接口规格可以参考
@@ -79,10 +82,10 @@ final class BucketManager
     public function listFiles($bucket, $prefix = null, $marker = null, $limit = 1000, $delimiter = null)
     {
         $query = array('bucket' => $bucket);
-        \Qiniu\setWithoutEmpty($query, 'prefix', $prefix);
-        \Qiniu\setWithoutEmpty($query, 'marker', $marker);
-        \Qiniu\setWithoutEmpty($query, 'limit', $limit);
-        \Qiniu\setWithoutEmpty($query, 'delimiter', $delimiter);
+        setWithoutEmpty($query, 'prefix', $prefix);
+        setWithoutEmpty($query, 'marker', $marker);
+        setWithoutEmpty($query, 'limit', $limit);
+        setWithoutEmpty($query, 'delimiter', $delimiter);
         $url = $this->getRsfHost() . '/list?' . http_build_query($query);
         return $this->get($url);
     }
@@ -106,7 +109,7 @@ final class BucketManager
      */
     public function stat($bucket, $key)
     {
-        $path = '/stat/' . \Qiniu\entry($bucket, $key);
+        $path = '/stat/' . entry($bucket, $key);
         return $this->rsGet($path);
     }
 
@@ -121,7 +124,7 @@ final class BucketManager
      */
     public function delete($bucket, $key)
     {
-        $path = '/delete/' . \Qiniu\entry($bucket, $key);
+        $path = '/delete/' . entry($bucket, $key);
         list(, $error) = $this->rsPost($path);
         return $error;
     }
@@ -154,8 +157,8 @@ final class BucketManager
      */
     public function copy($from_bucket, $from_key, $to_bucket, $to_key, $force = false)
     {
-        $from = \Qiniu\entry($from_bucket, $from_key);
-        $to = \Qiniu\entry($to_bucket, $to_key);
+        $from = entry($from_bucket, $from_key);
+        $to = entry($to_bucket, $to_key);
         $path = '/copy/' . $from . '/' . $to;
         if ($force === true) {
             $path .= '/force/true';
@@ -177,8 +180,8 @@ final class BucketManager
      */
     public function move($from_bucket, $from_key, $to_bucket, $to_key, $force = false)
     {
-        $from = \Qiniu\entry($from_bucket, $from_key);
-        $to = \Qiniu\entry($to_bucket, $to_key);
+        $from = entry($from_bucket, $from_key);
+        $to = entry($to_bucket, $to_key);
         $path = '/move/' . $from . '/' . $to;
         if ($force) {
             $path .= '/force/true';
@@ -199,8 +202,8 @@ final class BucketManager
      */
     public function changeMime($bucket, $key, $mime)
     {
-        $resource = \Qiniu\entry($bucket, $key);
-        $encode_mime = \Qiniu\base64_urlSafeEncode($mime);
+        $resource = entry($bucket, $key);
+        $encode_mime = base64_urlSafeEncode($mime);
         $path = '/chgm/' . $resource . '/mime/' . $encode_mime;
         list(, $error) = $this->rsPost($path);
         return $error;
@@ -219,7 +222,7 @@ final class BucketManager
      */
     public function changeType($bucket, $key, $fileType)
     {
-        $resource = \Qiniu\entry($bucket, $key);
+        $resource = entry($bucket, $key);
         $path = '/chtype/' . $resource . '/type/' . $fileType;
         list(, $error) = $this->rsPost($path);
         return $error;
@@ -251,8 +254,8 @@ final class BucketManager
     public function fetch($url, $bucket, $key = null)
     {
 
-        $resource = \Qiniu\base64_urlSafeEncode($url);
-        $to = \Qiniu\entry($bucket, $key);
+        $resource = base64_urlSafeEncode($url);
+        $to = entry($bucket, $key);
         $path = '/fetch/' . $resource . '/to/' . $to;
 
         $ak = $this->auth->getAccessKey();
@@ -273,7 +276,7 @@ final class BucketManager
      */
     public function prefetch($bucket, $key)
     {
-        $resource = \Qiniu\entry($bucket, $key);
+        $resource = entry($bucket, $key);
         $path = '/prefetch/' . $resource;
 
         $ak = $this->auth->getAccessKey();
@@ -318,7 +321,7 @@ final class BucketManager
      */
     public function deleteAfterDays($bucket, $key, $days)
     {
-        $entry = \Qiniu\entry($bucket, $key);
+        $entry = entry($bucket, $key);
         $path = "/deleteAfterDays/$entry/$days";
         list(, $error) = $this->rsPost($path);
         return $error;
@@ -423,7 +426,7 @@ final class BucketManager
     {
         $data = array();
         foreach ($key_day_pairs as $key => $day) {
-            array_push($data, '/deleteAfterDays/' . \Qiniu\entry($bucket, $key) . '/' . $day);
+            array_push($data, '/deleteAfterDays/' . entry($bucket, $key) . '/' . $day);
         }
         return $data;
     }
@@ -432,7 +435,7 @@ final class BucketManager
     {
         $data = array();
         foreach ($key_mime_pairs as $key => $mime) {
-            array_push($data, '/chgm/' . \Qiniu\entry($bucket, $key) . '/mime/' . base64_encode($mime));
+            array_push($data, '/chgm/' . entry($bucket, $key) . '/mime/' . base64_encode($mime));
         }
         return $data;
     }
@@ -441,7 +444,7 @@ final class BucketManager
     {
         $data = array();
         foreach ($key_type_pairs as $key => $type) {
-            array_push($data, '/chtype/' . \Qiniu\entry($bucket, $key) . '/type/' . $type);
+            array_push($data, '/chtype/' . entry($bucket, $key) . '/type/' . $type);
         }
         return $data;
     }
@@ -450,7 +453,7 @@ final class BucketManager
     {
         $data = array();
         foreach ($keys as $key) {
-            array_push($data, $operation . '/' . \Qiniu\entry($bucket, $key));
+            array_push($data, $operation . '/' . entry($bucket, $key));
         }
         return $data;
     }
@@ -466,8 +469,8 @@ final class BucketManager
             $forceOp = "true";
         }
         foreach ($key_pairs as $from_key => $to_key) {
-            $from = \Qiniu\entry($source_bucket, $from_key);
-            $to = \Qiniu\entry($target_bucket, $to_key);
+            $from = entry($source_bucket, $from_key);
+            $to = entry($target_bucket, $to_key);
             array_push($data, $operation . '/' . $from . '/' . $to . "/force/" . $forceOp);
         }
         return $data;

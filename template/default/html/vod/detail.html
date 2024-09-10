@@ -201,7 +201,7 @@
 							<div class="det_tips">{if $GLOBALS['config']['app']['copyright_notice']}{$GLOBALS['config']['app']['copyright_notice']}{else}<span data-lang="resources_closed">{:lang_web('resources_closed')}</span>{/if}</div>{else}
 							{include file="widget/detail_button"}
 							<div class="playbtn o_share ">
-								<a class="btn btn_share open-share" href="javascript:;"><i class="iconfont">&#xe615;</i>&nbsp; <span data-lang="string_vod_share">{:lang_web('string_vod_share')}</span>  </a>
+								<a class="btn btn_share open-share" href="javascript:"><i class="iconfont">&#xe615;</i>&nbsp; <span data-lang="string_vod_share">{:lang_web('string_vod_share')}</span>  </a>
 								{include file="widget/share"}
 							</div>
 							{/if}
@@ -315,7 +315,7 @@
 				<div class="pannel clearfix" id="bofy">
 					<div class="pannel_head clearfix">
 						<div class="text_muted pull_right">
-						<a href="javascript:;" class="sort_btn"><i class="iconfont">&#xe658;</i>&nbsp; <span data-lang="string_vod_sort">{:lang_web('string_vod_sort')}</span> </a>
+						<a href="javascript:" class="sort_btn"><i class="iconfont">&#xe658;</i>&nbsp; <span data-lang="string_vod_sort">{:lang_web('string_vod_sort')}</span> </a>
 						</div>
 						<h3 class="title" data-lang="string_vod_playlist">{:lang_web('string_vod_playlist')}</h3>
 					</div>
@@ -340,7 +340,7 @@
 									<li><a href="{:mac_url_vod_play($obj,['sid'=>$vo.sid,'nid'=>$vo2.nid])}">{$vo2.name}</a></li>
 									{/maccms:foreach}
 								</ul>
-								<a href="javascript:;" onclick="showlist(this);" class="listshow hidden_xs"><span><i class="iconfont">&#xe63a;</i>&nbsp;<span data-lang="string_vod_expand">{:lang_web('string_vod_expand')}</span></span></a>
+								<a href="javascript:" onclick="showlist(this);" class="listshow hidden_xs"><span><i class="iconfont">&#xe63a;</i>&nbsp;<span data-lang="string_vod_expand">{:lang_web('string_vod_expand')}</span></span></a>
 							</div>
 							<div class="playlist_full">
 								<ul class="content_playlist clearfix">

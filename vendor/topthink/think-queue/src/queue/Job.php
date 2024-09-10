@@ -172,7 +172,7 @@ abstract class Job
 
     /**
      * Calculate the number of seconds with the given delay.
-     * @param  \DateTime|int $delay
+     * @param DateTime|int $delay
      * @return int
      */
     protected function getSeconds($delay)

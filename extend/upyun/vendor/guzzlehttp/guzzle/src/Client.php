@@ -1,9 +1,11 @@
 <?php
 namespace GuzzleHttp;
 
+use Exception;
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Promise;
 use GuzzleHttp\Psr7;
+use InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -57,14 +59,14 @@ class Client implements ClientInterface
      *
      * @param array $config Client configuration settings.
      *
-     * @see \GuzzleHttp\RequestOptions for a list of available request options.
+     * @see RequestOptions for a list of available request options.
      */
     public function __construct(array $config = [])
     {
         if (!isset($config['handler'])) {
             $config['handler'] = HandlerStack::create();
         } elseif (!is_callable($config['handler'])) {
-            throw new \InvalidArgumentException('handler must be a callable');
+            throw new InvalidArgumentException('handler must be a callable');
         }
 
         // Convert the base_uri to a UriInterface
@@ -78,7 +80,7 @@ class Client implements ClientInterface
     public function __call($method, $args)
     {
         if (count($args) < 1) {
-            throw new \InvalidArgumentException('Magic request methods require a URI and optional options array');
+            throw new InvalidArgumentException('Magic request methods require a URI and optional options array');
         }
 
         $uri = $args[0];
@@ -228,7 +230,7 @@ class Client implements ClientInterface
                 $defaults['_conditional'] = null;
                 unset($options['headers']);
             } elseif (!is_array($options['headers'])) {
-                throw new \InvalidArgumentException('headers must be an array');
+                throw new InvalidArgumentException('headers must be an array');
             }
         }
 
@@ -275,7 +277,7 @@ class Client implements ClientInterface
 
         try {
             return Promise\promise_for($handler($request, $options));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return Promise\rejection_for($e);
         }
     }
@@ -294,7 +296,7 @@ class Client implements ClientInterface
 
         if (isset($options['form_params'])) {
             if (isset($options['multipart'])) {
-                throw new \InvalidArgumentException('You cannot use '
+                throw new InvalidArgumentException('You cannot use '
                     . 'form_params and multipart at the same time. Use the '
                     . 'form_params option if you want to send application/'
                     . 'x-www-form-urlencoded requests, and the multipart '
@@ -311,7 +313,7 @@ class Client implements ClientInterface
         }
 
         if (isset($options['json'])) {
-            $options['body'] = \GuzzleHttp\json_encode($options['json']);
+            $options['body'] = json_encode($options['json']);
             unset($options['json']);
             $options['_conditional']['Content-Type'] = 'application/json';
         }
@@ -365,7 +367,7 @@ class Client implements ClientInterface
                 $value = http_build_query($value, null, '&', PHP_QUERY_RFC3986);
             }
             if (!is_string($value)) {
-                throw new \InvalidArgumentException('query must be a string or array');
+                throw new InvalidArgumentException('query must be a string or array');
             }
             $modify['query'] = $value;
             unset($options['query']);
@@ -375,7 +377,7 @@ class Client implements ClientInterface
         if (isset($options['sink'])) {
             // TODO: Add more sink validation?
             if (is_bool($options['sink'])) {
-                throw new \InvalidArgumentException('sink must not be a boolean');
+                throw new InvalidArgumentException('sink must not be a boolean');
             }
         }
 
@@ -405,7 +407,7 @@ class Client implements ClientInterface
 
     private function invalidBody()
     {
-        throw new \InvalidArgumentException('Passing in the "body" request '
+        throw new InvalidArgumentException('Passing in the "body" request '
             . 'option as an array to send a POST request has been deprecated. '
             . 'Please use the "form_params" request option to send a '
             . 'application/x-www-form-urlencoded request, or the "multipart" '

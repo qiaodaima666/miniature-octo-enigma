@@ -215,7 +215,7 @@ $.browser = navigator.userAgent;
                 stopLoading();
                 select.hide();
             }
-        };
+        }
 
         function trimWords(value) {
             if (!value) return [""];
@@ -241,12 +241,12 @@ $.browser = navigator.userAgent;
                 $input.val($input.val() + sValue.substring(lastWord(previousValue).length));
                 $(input).selection(previousValue.length, previousValue.length + sValue.length);
             }
-        };
+        }
 
         function hideResults() {
             clearTimeout(timeout);
             timeout = setTimeout(hideResultsNow, 200);
-        };
+        }
 
         function hideResultsNow() {
             var wasVisible = select.visible();
@@ -266,7 +266,7 @@ $.browser = navigator.userAgent;
                     }
                 });
             }
-        };
+        }
 
         function receiveData(q, data) {
             if (data && data.length && hasFocus) {
@@ -277,7 +277,7 @@ $.browser = navigator.userAgent;
             } else {
                 hideResultsNow();
             }
-        };
+        }
 
         function request(term, success, failure) {
             if (!options.matchCase) term = term.toLowerCase();
@@ -310,7 +310,7 @@ $.browser = navigator.userAgent;
                 select.emptyList();
                 failure(term);
             }
-        };
+        }
 
         function parse(data) {
             var parsed = [];
@@ -327,11 +327,11 @@ $.browser = navigator.userAgent;
                 }
             }
             return parsed;
-        };
+        }
 
         function stopLoading() {
             $input.removeClass(options.loadingClass);
-        };
+        }
     };
     $.Autocompleter.defaults = {
         inputClass: "ac_input",
@@ -373,7 +373,7 @@ $.browser = navigator.userAgent;
             }
             if (i == -1) return false;
             return i == 0 || options.matchContains;
-        };
+        }
 
         function add(q, value) {
             if (length > options.cacheLength) {
@@ -406,7 +406,7 @@ $.browser = navigator.userAgent;
                 if (nullData++ < options.max) {
                     stMatchSets[""].push(row);
                 }
-            };
+            }
             $.each(stMatchSets, function(i, value) {
                 options.cacheLength++;
                 add(i, value);
@@ -508,7 +508,7 @@ $.browser = navigator.userAgent;
                     list.scrollTop(offset);
                 }
             }
-        };
+        }
 
         function movePosition(step) {
             active += step;

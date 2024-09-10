@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Plog extends Base {
     // 设置数据表（不含前缀）
@@ -66,7 +67,7 @@ class Plog extends Base {
     {
         $data['plog_time'] = time();
 
-        $validate = \think\Loader::validate('Plog');
+        $validate = Loader::validate('Plog');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

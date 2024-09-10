@@ -38,7 +38,7 @@ class Listener
     protected $workerCommand;
 
     /**
-     * @var \Closure|null
+     * @var Closure|null
      */
     protected $outputHandler;
 
@@ -69,7 +69,7 @@ class Listener
     }
 
     /**
-     * @param \Think\Process $process
+     * @param Process $process
      * @param  int           $memory
      */
     public function runProcess(Process $process, $memory)
@@ -88,7 +88,7 @@ class Listener
      * @param  int    $delay
      * @param  int    $memory
      * @param  int    $timeout
-     * @return \think\Process
+     * @return Process
      */
     public function makeProcess($queue, $delay, $memory, $timeout)
     {
@@ -128,7 +128,7 @@ class Listener
     }
 
     /**
-     * @param  \Closure $outputHandler
+     * @param Closure $outputHandler
      * @return void
      */
     public function setOutputHandler(Closure $outputHandler)

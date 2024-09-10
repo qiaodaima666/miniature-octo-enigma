@@ -11,6 +11,7 @@
 
 namespace think\captcha;
 
+use think\Response;
 use think\Session;
 
 class Captcha
@@ -131,7 +132,7 @@ class Captcha
      * 验证码保存到session的格式为： array('verify_code' => '验证码值', 'verify_time' => '验证码创建时间');
      * @access public
      * @param string $id 要生成验证码的标识
-     * @return \think\Response
+     * @return Response
      */
     public function entry($id = '')
     {

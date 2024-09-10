@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use think\Loader;
 
 class Admin extends Base
 {
@@ -45,7 +46,7 @@ class Admin extends Base
             if(!in_array('index/welcome',$param['admin_auth'])){
                 $param['admin_auth'][] = 'index/welcome';
             }
-            $validate = \think\Loader::validate('Token');
+            $validate = Loader::validate('Token');
             if(!$validate->check($param)){
                 return $this->error($validate->getError());
             }

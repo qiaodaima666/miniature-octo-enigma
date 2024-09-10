@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use think\Db;
+use think\Loader;
 
 class Cash extends Base {
     // 设置数据表（不含前缀）
@@ -87,7 +88,7 @@ class Cash extends Base {
         $data['cash_time'] = time();
         $data['cash_no'] = 'PAY' . date('YmdHis') . rand(100000, 999999);
 
-        $validate = \think\Loader::validate('Cash');
+        $validate = Loader::validate('Cash');
         if(!$validate->check($data)){
             return ['code'=>1001,'msg'=>lang('param_err').'：'.$validate->getError() ];
         }

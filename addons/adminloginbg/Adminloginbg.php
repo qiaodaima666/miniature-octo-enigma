@@ -3,6 +3,8 @@
 namespace addons\adminloginbg;
 
 use think\Addons;
+use think\Request;
+use think\View;
 
 /**
  * 登录背景图插件
@@ -28,7 +30,7 @@ class Adminloginbg extends Addons
         return true;
     }
 
-    public function adminLoginInit(\think\Request &$request)
+    public function adminLoginInit(Request &$request)
     {
         $info = $this->getInfo();
         if($info['state'] ==1) {
@@ -39,7 +41,7 @@ class Adminloginbg extends Addons
             } else {
                 $background = $config['image'];
             }
-            \think\View::instance()->assign('background', $background);
+            View::instance()->assign('background', $background);
         }
     }
 

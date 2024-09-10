@@ -1,6 +1,8 @@
 <?php
 namespace GuzzleHttp;
 
+use InvalidArgumentException;
+use LogicException;
 use Psr\Http\Message\RequestInterface;
 
 /**
@@ -192,7 +194,7 @@ class HandlerStack
     {
         if (!$this->cached) {
             if (!($prev = $this->handler)) {
-                throw new \LogicException('No handler has been specified');
+                throw new LogicException('No handler has been specified');
             }
 
             foreach (array_reverse($this->stack) as $fn) {
@@ -217,7 +219,7 @@ class HandlerStack
             }
         }
 
-        throw new \InvalidArgumentException("Middleware not found: $name");
+        throw new InvalidArgumentException("Middleware not found: $name");
     }
 
     /**

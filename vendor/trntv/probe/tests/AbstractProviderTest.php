@@ -5,12 +5,15 @@
 
 namespace Probe\Tests;
 
+use Exception;
+use PHPUnit_Framework_TestCase;
+use probe\provider\AbstractProvider;
 use Probe\ProviderFactory;
 
-class AbstractProviderTest extends \PHPUnit_Framework_TestCase
+class AbstractProviderTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \probe\provider\AbstractProvider
+     * @var AbstractProvider
      */
     protected $provider;
 
@@ -71,7 +74,7 @@ class AbstractProviderTest extends \PHPUnit_Framework_TestCase
     {
         try {
             $this->provider->getCpuUsage();
-        } catch (\Exception $notExpected) {
+        } catch (Exception $notExpected) {
             $this->fail();
         }
         $this->assertTrue(true);

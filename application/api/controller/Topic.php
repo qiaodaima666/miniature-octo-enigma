@@ -6,6 +6,7 @@ use think\Controller;
 use think\Cache;
 use think\Db;
 use think\Request;
+use think\response\Json;
 use think\Validate;
 
 class Topic extends Base
@@ -24,7 +25,7 @@ class Topic extends Base
      *  获取列表
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_list(Request $request)
     {
@@ -79,7 +80,7 @@ class Topic extends Base
      *  获取列表与推荐信息视频文章
      *
      * @param Request $request
-     * @return \think\response\Json
+     * @return Json
      */
     public function get_detail(Request $request)
     {

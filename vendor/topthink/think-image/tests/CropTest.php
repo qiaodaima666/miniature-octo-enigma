@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace tests;
 
+use SplFileInfo;
 use think\Image;
 
 class CropTest extends TestCase
@@ -24,7 +25,7 @@ class CropTest extends TestCase
         $this->assertEquals(300, $image->width());
         $this->assertEquals(300, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -41,7 +42,7 @@ class CropTest extends TestCase
         $this->assertEquals(300, $image->width());
         $this->assertEquals(300, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 
@@ -58,7 +59,7 @@ class CropTest extends TestCase
         $this->assertEquals(300, $image->width());
         $this->assertEquals(300, $image->height());
 
-        $file = new \SplFileInfo($pathname);
+        $file = new SplFileInfo($pathname);
 
         $this->assertTrue($file->isFile());
 

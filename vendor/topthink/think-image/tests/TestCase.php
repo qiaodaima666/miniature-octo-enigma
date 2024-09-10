@@ -11,9 +11,10 @@
 
 namespace tests;
 
+use PHPUnit_Framework_TestCase;
 use think\File;
 
-abstract class TestCase extends \PHPUnit_Framework_TestCase
+abstract class TestCase extends PHPUnit_Framework_TestCase
 {
 
     protected function getJpeg()

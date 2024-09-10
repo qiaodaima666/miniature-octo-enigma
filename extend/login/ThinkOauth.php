@@ -1,6 +1,8 @@
 <?php
 namespace login;
 
+use think\Exception;
+
 abstract class ThinkOauth
 {
 
@@ -94,7 +96,7 @@ abstract class ThinkOauth
         $config['APP_SECRET'] = $tmp['secret'];
 
         if (empty($config['APP_KEY']) || empty($config['APP_SECRET'])) {
-            throw new \think\Exception('请配置您申请的APP_KEY和APP_SECRET', 100001);
+            throw new Exception('请配置您申请的APP_KEY和APP_SECRET', 100001);
         } else {
             $this->AppKey = $config['APP_KEY'];
             $this->AppSecret = $config['APP_SECRET'];
@@ -114,7 +116,7 @@ abstract class ThinkOauth
             $class_name = "\\login\\sdk\\{$name}";
             return new $class_name($token);
         } else {
-            throw new \think\Exception('CLASS_NOT_EXIST:' . $name, 100002);
+            throw new Exception('CLASS_NOT_EXIST:' . $name, 100002);
         }
     }
 
@@ -136,7 +138,7 @@ abstract class ThinkOauth
             if (is_array($_param)) {
                 $params = array_merge($params, $_param);
             } else {
-                throw new \think\Exception('AUTHORIZE配置不正确！',100003);
+                throw new Exception('AUTHORIZE配置不正确！',100003);
             }
         }
         return $this->GetRequestCodeURL . '?' . http_build_query($params);
@@ -150,7 +152,7 @@ abstract class ThinkOauth
         $this->Callback = THIRD_LOGIN_CALLBACK . "{$this->Type}";
 
         if(empty($this->Callback)) {
-            throw new \think\Exception('请配置回调页面地址', 100004);
+            throw new Exception('请配置回调页面地址', 100004);
         }
     }
 
@@ -205,7 +207,7 @@ abstract class ThinkOauth
                 $opts[CURLOPT_POSTFIELDS] = $params;
                 break;
             default:
-                throw new \think\Exception('不支持的请求方式！',100005);
+                throw new Exception('不支持的请求方式！',100005);
         }
 
         /* 初始化并执行curl请求 */
@@ -215,7 +217,7 @@ abstract class ThinkOauth
         $error = curl_error($ch);
         curl_close($ch);
         if ($error)
-            throw new \think\Exception(lang_web('error_occurred') . $error,100006);
+            throw new Exception(lang_web('error_occurred') . $error,100006);
         return $data;
     }
 

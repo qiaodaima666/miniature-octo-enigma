@@ -9,7 +9,10 @@
 // | Author: yunwuxin <448901948@qq.com>
 // +----------------------------------------------------------------------
 
-\think\Console::addDefaultCommands([
+use think\Console;
+use think\Queue;
+
+Console::addDefaultCommands([
     "think\\queue\\command\\Work",
     "think\\queue\\command\\Restart",
     "think\\queue\\command\\Listen",
@@ -28,9 +31,9 @@ if (!function_exists('queue')) {
     function queue($job, $data = '', $delay = 0, $queue = null)
     {
         if ($delay > 0) {
-            \think\Queue::later($delay, $job, $data, $queue);
+            Queue::later($delay, $job, $data, $queue);
         } else {
-            \think\Queue::push($job, $data, $queue);
+            Queue::push($job, $data, $queue);
         }
     }
 }

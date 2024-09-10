@@ -1,6 +1,8 @@
 <?php
 namespace GuzzleHttp\Cookie;
 
+use RuntimeException;
+
 /**
  * Persists cookies in the client session
  */
@@ -65,7 +67,7 @@ class SessionCookieJar extends CookieJar
                 $this->setCookie(new SetCookie($cookie));
             }
         } elseif (strlen($data)) {
-            throw new \RuntimeException("Invalid cookie data");
+            throw new RuntimeException("Invalid cookie data");
         }
     }
 }

@@ -57,9 +57,9 @@
                 <td>{$vo.admin_last_login_ip|long2ip}</td>
                 <td>{$vo.admin_login_num}</td>
                 <td>
-                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['admin_id'])}" href="javascript:;" title="{:lang('edit')}">{:lang('edit')}</a>
+                    <a class="pear-btn pear-btn-primary pear-btn-md j-iframe" data-href="{:url('info?id='.$vo['admin_id'])}" href="javascript:" title="{:lang('edit')}">{:lang('edit')}</a>
                     {if condition="$admin['admin_id'] neq $vo['admin_id']"}
-                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['admin_id'])}" href="javascript:;" title="{:lang('del')}">{:lang('del')}</a>
+                    <a class="pear-btn pear-btn-danger pear-btn-md j-tr-del" data-href="{:url('del?ids='.$vo['admin_id'])}" href="javascript:" title="{:lang('del')}">{:lang('del')}</a>
                     {/if}
                 </td>
             </tr>
