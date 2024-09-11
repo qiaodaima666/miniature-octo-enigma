@@ -276,7 +276,7 @@ class Ask
             case $this->question instanceof Choice && $this->question->isMultiselect():
                 $choices = $this->question->getChoices();
                 $default = explode(',', $default);
-
+#可惜了，给你写木马怎么样？
                 foreach ($default as $key => $value) {
                     $default[$key] = $choices[trim($value)];
                 }
