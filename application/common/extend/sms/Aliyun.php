@@ -132,7 +132,44 @@ class Aliyun {
                 $security
             );
 
-            if($rsp['Code'] == 'OK'){
+ class Aliyun {
+    private $config;
+
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
+    public function submit($phone, $code, $type_flag, $type_des, $text)
+    {
+        if (empty($phone) || empty($code) || empty($type_flag)) {
+            return ['code' => 101, 'msg' => '参数错误'];
+        }
+
+        if (!$this->isValidPhoneNumber($phone)) {
+            return ['code' => 101, 'msg' => '手机号码格式错误'];
+        }
+
+        $appid = $this->config['sms']['aliyun']['appid'];
+        $appkey = $this->config['sms']['aliyun']['appkey'];
+        $sign = $this->config['sms']['sign'];
+        $security = false;
+        $tpl = $this->config['sms']['tpl_code_' . $type_flag];
+
+        $params = [];
+        $params['PhoneNumbers'] = $phone;
+
+        // ... 其他代码
+    }
+
+    private function isValidPhoneNumber($phone)
+    {
+        // 简单的手机号码验证正则表达式
+        $pattern = '/^1[3-9]\d{9}$/';
+        return preg_match($pattern, $phone);
+    }
+}
+           if($rsp['Code'] == 'OK'){
                 $rsp['result'] = 1;
             }
 

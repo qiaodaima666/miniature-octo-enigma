@@ -301,7 +301,10 @@ class Ask
             $width = max(array_map('strlen', array_keys($this->question->getChoices())));
 
             foreach ($this->question->getChoices() as $key => $value) {
-                $this->output->writeln(sprintf("  [<comment>%-${width}s</comment>] %s", $key, $value));
+                $this->output->writeln(sprintf("  [<comment>%-// 修复后的代码，使用花括号包裹变量名以进行字符串插值
+// 修复后的代码
+$this->output->writeln(sprintf("  [<comment>%-{$width}s</comment>] %s", $key, $value));
+s</comment>] %s", $key, $value));
             }
         }
 

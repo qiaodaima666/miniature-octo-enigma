@@ -220,7 +220,9 @@ class Descriptor
             $width = $this->getColumnWidth($description->getCommands());
 
             foreach ($description->getCommands() as $command) {
-                $this->writeText(sprintf("%-${width}s %s", $command->getName(), $command->getDescription()), $options);
+                $this->writeText(sprintf("%-// 修复后的代码，使用花括号包裹变量名以兼容 PHP 8.2 及以上版本
+$this->writeText(sprintf("%-{$width}s %s", $command->getName(), $command->getDescription()), $options);
+s %s", $command->getName(), $command->getDescription()), $options);
                 $this->writeText("\n");
             }
         } else {

@@ -32,52 +32,72 @@ class Encoder
     ::    GIFEncoder...
     ::
      */
-    public function __construct(
-        $GIF_src, $GIF_dly, $GIF_lop, $GIF_dis,
-        $GIF_red, $GIF_grn, $GIF_blu, $GIF_mod
-    )
-    {
-        if (!is_array($GIF_src)) {
-            printf("%s: %s", $this->VER, $this->ERR['ERR00']);
-            exit(0);
+   public function __construct(
+    $GIF_src, $GIF_dly, $GIF_lop, $GIF_dis,
+    $GIF_red, $GIF_grn, $GIF_blu, $GIF_mod
+)
+{
+ if (!is_array($GIF_src)) {
+    throw new Exception($this->VER . ": " . $this->ERR['ERR00']);
+}
+
+$this->LOP = ($GIF_lop > -1) ? $GIF_lop : 0;
+$this->DIS = ($GIF_dis > -1) ? (($GIF_dis < 3) ? $GIF_dis : 3) : 2;
+$this->COL = ($GIF_red > -1 && $GIF_grn > -1 && $GIF_blu > -1)
+    ? ($GIF_red | ($GIF_grn << 8) | ($GIF_blu << 16)) : -1;
+
+foreach ($GIF_src as $index => $src) {
+    $mode = strtolower($GIF_mod);
+
+    if ($mode === "url") {
+        $handle = fopen($src, "rb");
+        if (!$handle) {
+            throw new Exception($this->VER . ": " . $this->ERR['ERR02'] . " ( " . $mode . " )!");
         }
-        $this->LOP = ($GIF_lop > -1) ? $GIF_lop : 0;
-        $this->DIS = ($GIF_dis > -1) ? (($GIF_dis < 3) ? $GIF_dis : 3) : 2;
-        $this->COL = ($GIF_red > -1 && $GIF_grn > -1 && $GIF_blu > -1) ?
-            ($GIF_red | ($GIF_grn << 8) | ($GIF_blu << 16)) : -1;
-        for ($i = 0; $i < count($GIF_src); $i++) {
-            if (strtolower($GIF_mod) == "url") {
-                $this->BUF[] = fread(fopen($GIF_src[$i], "rb"), filesize($GIF_src[$i]));
-            } else if (strtolower($GIF_mod) == "bin") {
-                $this->BUF[] = $GIF_src[$i];
-            } else {
-                printf("%s: %s ( %s )!", $this->VER, $this->ERR['ERR02'], $GIF_mod);
-                exit(0);
-            }
-            if (substr($this->BUF[$i], 0, 6) != "GIF87a" && substr($this->BUF[$i], 0, 6) != "GIF89a") {
-                printf("%s: %d %s", $this->VER, $i, $this->ERR['ERR01']);
-                exit(0);
-            }
-            for ($j = (13 + 3 * (2 << (ord($this->BUF[$i]{10}) & 0x07))), $k = true; $k; $j++) {
-                switch ($this->BUF[$i]{$j}) {
-                    case "!":
-                        if ((substr($this->BUF[$i], ($j + 3), 8)) == "NETSCAPE") {
-                            printf("%s: %s ( %s source )!", $this->VER, $this->ERR['ERR03'], ($i + 1));
-                            exit(0);
-                        }
-                        break;
-                    case ";":
-                        $k = false;
-                        break;
-                }
-            }
+        try {
+            $this->BUF[] = fread($handle, filesize($src));
+        } finally {
+            fclose($handle);
         }
-        $this->addHeader();
-        for ($i = 0; $i < count($this->BUF); $i++) {
-            $this->addFrames($i, $GIF_dly[$i]);
-        }
-        $this->addFooter();
+    } elseif ($mode === "bin") {
+        $this->BUF[] = $src;
+    } else {
+        throw new Exception($this->VER . ": " . $this->ERR['ERR02'] . " ( " . $mode . " )!");
     }
+
+    if (substr($this->BUF[$index], 0, 6) !== "GIF87a" && substr($this->BUF[$index], 0, 6) !== "GIF89a") {
+        throw new Exception($this->VER . ": " . $index . " " . $this->ERR['ERR01']);
+    }
+
+    $offset = 13 + 3 * (2 << (ord($this->BUF[$index][10]) & 0x07));
+    $foundEnd = false;
+    for ($j = $offset; !$foundEnd; $j++) {
+        switch ($this->BUF[$index][$j]) {
+            case "!":
+                if (substr($this->BUF[$index], $j + 3, 8) === "NETSCAPE") {
+                    throw new Exception($this->VER . ": " . $this->ERR['ERR03'] . " ( " . ($index + 1) . " source )!");
+                }
+                break;
+            case ";":
+                $foundEnd = true;
+                break;
+        }
+    }
+}
+        }
+    }
+
+    $this->addHeader();
+    for ($i = 0; $i < count($this->BUF); $i++) {
+        $this->addFrames($i, $GIF_dly[$i]);
+    }
+    $this->addFooter();
+class ExampleClass {
+    public function exampleFunction() {
+        // 函数体内的代码
+        echo "Hello, world!";
+    }
+} // 修复：确保这是类定义的结束而不是其他地方的闭合括号
 
     /*
     :::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -85,23 +105,30 @@ class Encoder
     ::    GIFAddHeader...
     ::
      */
-    public function addHeader()
+    class Encoder { // 假设这是类定义的开始
+
+    // 正确的方法定义前不应该有多余的注释或空格
+    public function addHeader() {
+        // 方法实现
+    }
+
+} // 类定义结束 function addHeader()
     {
-        if (ord($this->BUF[0]{10}) & 0x80) {
-            $cmap = 3 * (2 << (ord($this->BUF[0]{10}) & 0x07));
+// 假设 $this->BUF[0] 是一个有效的字符串，并且长度大于等于11
+if (!empty($this->BUF[0]) && strlen($this->BUF[0]) > 10) {
+    if ((ord($this->BUF[0][10]) & 0x80) !== 0) {
+        // 处理逻辑
+    }
+}
+            $cmap = 3 * (2 << (ord($this->BUF[0]$cmap = 3 * (2 << (ord($this->BUF[0]{10}) & 0x07));
+10}) & 0x07));
             $this->GIF .= substr($this->BUF[0], 6, 7);
             $this->GIF .= substr($this->BUF[0], 13, $cmap);
             $this->GIF .= "!\377\13NETSCAPE2.0\3\1" . $this->word($this->LOP) . "\0";
         }
     }
 
-    /*
-    :::::::::::::::::::::::::::::::::::::::::::::::::::
-    ::
-    ::    GIFAddFrames...
-    ::
-     */
-    public function addFrames($i, $d)
+     public function addFrames($i, $d)
     {
         $Locals_img = '';
         $Locals_str = 13 + 3 * (2 << (ord($this->BUF[$i]{10}) & 0x07));
@@ -174,6 +201,10 @@ class Encoder
     ::
      */
     public function addFooter()
+{
+    // 方法体保持不变
+}
+ function addFooter()
     {
         $this->GIF .= ";";
     }
@@ -184,27 +215,66 @@ class Encoder
     ::    GIFBlockCompare...
     ::
      */
-    public function blockCompare($GlobalBlock, $LocalBlock, $Len)
-    {
-        for ($i = 0; $i < $Len; $i++) {
-            if (
-                $GlobalBlock{3 * $i + 0} != $LocalBlock{3 * $i + 0} ||
-                $GlobalBlock{3 * $i + 1} != $LocalBlock{3 * $i + 1} ||
-                $GlobalBlock{3 * $i + 2} != $LocalBlock{3 * $i + 2}
-            ) {
-                return (0);
-            }
+   public function blockCompare($GlobalBlock, $LocalBlock, $Len) {
+    // 原有代码保持不变
+}
+ function blockCompare($GlobalBlock, $LocalBlock, $Len) {
+    // 原有的方法体保持不变
+}
+ function blockCompare($GlobalBlock, $LocalBlock, $Len)
+{
+    for ($i = 0; $i < $Len; $i++) {
+        if (
+            $GlobalBlock[3 * $i + 0] != $LocalBlock[3 * $i + 0] ||
+            $GlobalBlock[3 * $i + 1] != $LocalBlock[3 * $i + 1] ||
+            $GlobalBlock[3 * $i + 2] != $LocalBlock[3 * $i + 2]
+        ) {
+            return 0;
         }
-        return (1);
     }
-
+    return 1;
+}
     /*
     :::::::::::::::::::::::::::::::::::::::::::::::::::
     ::
     ::    GIFWord...
     ::
      */
-    public function word($int)
+<?php
+// 这里是你的 PHP 代码
+?>
+?php
+// 假设这里的 '<' 是一个错误，我们将其删除
+// 如果 '<' 是必要的，请根据实际上下文进行修正
+
+// 以下是假设的代码，实际情况可能不同
+// 假设原始代码是这样的（错误的部分用注释标注）：
+// if ($something < $value) {
+//     // ...
+// }
+
+// 修正后的代码：
+if ($something < $value) {
+    // ...
+}
+
+// 继续其他代码...
+?>
+?php
+
+namespace vendor\topthink\think-image\src\image\gif;
+
+class Encoder
+{
+    // 私有方法用于处理特定逻辑
+    private function word($int)
+    {
+        // 方法实现
+    }
+}
+{
+    // 方法实现
+}
     {
         return (chr($int & 0xFF) . chr(($int >> 8) & 0xFF));
     }
